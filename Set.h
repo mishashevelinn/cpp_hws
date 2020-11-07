@@ -8,7 +8,7 @@ using namespace std;
 class Set
 {
 public:
-    Set(int* arr, int set_size, int arr_len, string name);
+    Set(int* arr, int set_size, int arr_len, const string& name);
     bool is_empty(){return ord == 0;}
     bool contains(int element);
     bool add(int element);

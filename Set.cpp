@@ -3,12 +3,12 @@
 //
 // Created by misha on 05/11/2020.
 //
-Set::Set(int *arr_init, int size, int arr_len, string name_init) {
+Set::Set(int *arr_init, int size, int arr_len, const string& name_init) {
     sort(arr_init, size);
     //remove_duplicates();
     arr = arr_init;
     ord = size;
-    name = name_init;
+    name.assign(name_init);
     arr_size = arr_len;
 }
 

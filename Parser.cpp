@@ -20,7 +20,7 @@ int *Parser::parse_set() {
     int i;
     int j = 0;
     int len = str.length();
-    int *arr = new int(len);
+    int *arr = new int(len*2);
     char *cshit = NULL;
     char left_curly = '{';
     char right_curly = '}';
