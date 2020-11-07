@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/misha/CLionProjects/cpp_hws/Parser.cpp
+iostream
+-
+sstream
+-
+string
+-
+cstdlib
+-
+Parser.h
+/home/misha/CLionProjects/cpp_hws/Parser.h
+
+/home/misha/CLionProjects/cpp_hws/Parser.h
+iostream
+-
+sstream
+-
+string
+-
+cstdlib
+-
+

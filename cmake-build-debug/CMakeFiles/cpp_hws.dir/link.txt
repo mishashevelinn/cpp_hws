@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/cpp_hws.dir/main.cpp.o CMakeFiles/cpp_hws.dir/Set.cpp.o CMakeFiles/cpp_hws.dir/Parser.cpp.o CMakeFiles/cpp_hws.dir/Calculator.cpp.o  -o cpp_hws 
