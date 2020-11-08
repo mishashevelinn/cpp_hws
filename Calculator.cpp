@@ -14,23 +14,32 @@ Calculator::Calculator() {
 
 }
 
+int Calculator::find_set(string name) {
+    for (int i = 0; i < size; i++) {
+        if (!(calc_arr[i]->get_name().compare(name))) {
+            return i;
+        }
+
+    }
+    return -1;
+}
+
 
 bool Calculator::remove_set(string set_name) {
     int i = 0;
-    for (; i < size; i++) {
-        if (!calc_arr[i]->get_name().compare(set_name) && parser->isValid(set_name)) {
-            delete[] calc_arr[i];
-
-            for (int j = i; j < size; j++) {
-                calc_arr[i] = calc_arr[i + 1];
-            }
-            size--;
-            cout << "removing " << set_name << endl;
-            return true;
-        }
+    int index = find_set(set_name);
+    if(index == -1)
+        return false;
+    for (int j = index; j < size-1; j++) {
+        calc_arr[j] = calc_arr[j + 1];
     }
-    return false;
+    size--;
+    cout << "removing " << set_name << endl;
+    return true;
 }
+
+
+
 
 bool Calculator::add_set() {
     Set *set_to_add;

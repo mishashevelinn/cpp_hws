@@ -20,20 +20,6 @@ Set.h
 Parser.h
 /home/misha/CLionProjects/cpp_hws/Parser.h
 
-/home/misha/CLionProjects/cpp_hws/Parser.cpp
-iostream
--
-sstream
--
-string
--
-cstdlib
--
-Parser.h
-/home/misha/CLionProjects/cpp_hws/Parser.h
-Set.h
-/home/misha/CLionProjects/cpp_hws/Set.h
-
 /home/misha/CLionProjects/cpp_hws/Parser.h
 iostream
 -
@@ -42,12 +28,6 @@ sstream
 string
 -
 cstdlib
--
-Set.h
-/home/misha/CLionProjects/cpp_hws/Set.h
-
-/home/misha/CLionProjects/cpp_hws/Set.cpp
-iostream
 -
 Set.h
 /home/misha/CLionProjects/cpp_hws/Set.h
@@ -55,16 +35,4 @@ Set.h
 /home/misha/CLionProjects/cpp_hws/Set.h
 string
 /home/misha/CLionProjects/cpp_hws/string
-
-/home/misha/CLionProjects/cpp_hws/main.cpp
-iostream
--
-string
--
-Parser.h
-/home/misha/CLionProjects/cpp_hws/Parser.h
-Set.h
-/home/misha/CLionProjects/cpp_hws/Set.h
-Calculator.h
-/home/misha/CLionProjects/cpp_hws/Calculator.h
 

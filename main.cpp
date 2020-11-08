@@ -1,7 +1,5 @@
 #include <iostream>
 #include<string>
-#include "Parser.h"
-#include "Set.h"
 #include "Calculator.h"
 
 using namespace std;
@@ -16,7 +14,9 @@ int main() {
             break;
     }
     calc->print_calc();
-    calc->remove_set("MISHA");
+    if(!calc->remove_set("MISHA"))
+        cout << "MISHA's NOT THERE BRO" << endl;
     calc->print_calc();
+    Set *s = new Set("hi");
     return 0;
 }

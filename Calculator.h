@@ -22,6 +22,7 @@ private:
     int size;
     void resize_arr();
 
+    int find_set(string name);
 };
 
 
