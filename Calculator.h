@@ -7,21 +7,20 @@
 
 
 #include "Set.h"
-
+#include "Parser.h"
 class Calculator {
 public:
-    void add_set(string set_name);
-    void remove_set(string set_name);
+    Calculator();
+    bool add_set();
+    bool remove_set(string set_name);
+    void print_calc();
 
-
-
-
-
-
-
-    int ** calc_arr;
-    int arr_size;
-    int in_storage;
+private:
+    Parser *parser;
+    int capacity;
+    Set ** calc_arr;
+    int size;
+    void resize_arr();
 
 };
 

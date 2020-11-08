@@ -3,14 +3,17 @@
 
 CMakeFiles/cpp_hws.dir/Calculator.cpp.o: ../Calculator.cpp
 CMakeFiles/cpp_hws.dir/Calculator.cpp.o: ../Calculator.h
+CMakeFiles/cpp_hws.dir/Calculator.cpp.o: ../Parser.h
 CMakeFiles/cpp_hws.dir/Calculator.cpp.o: ../Set.h
 
 CMakeFiles/cpp_hws.dir/Parser.cpp.o: ../Parser.cpp
 CMakeFiles/cpp_hws.dir/Parser.cpp.o: ../Parser.h
+CMakeFiles/cpp_hws.dir/Parser.cpp.o: ../Set.h
 
 CMakeFiles/cpp_hws.dir/Set.cpp.o: ../Set.cpp
 CMakeFiles/cpp_hws.dir/Set.cpp.o: ../Set.h
 
+CMakeFiles/cpp_hws.dir/main.cpp.o: ../Calculator.h
 CMakeFiles/cpp_hws.dir/main.cpp.o: ../Parser.h
 CMakeFiles/cpp_hws.dir/main.cpp.o: ../Set.h
 CMakeFiles/cpp_hws.dir/main.cpp.o: ../main.cpp

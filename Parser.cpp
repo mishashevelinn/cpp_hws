@@ -6,60 +6,26 @@
 #include<string>
 #include <cstdlib>
 #include "Parser.h"
+#include "Set.h"
 
 
 using namespace std;
 
-int *Parser::parse_set() {
-
-
+Set *Parser::parse_set() {
+    string name = parse_name();
+    if(!name.compare("error")) {
+        cout << "name-error" << endl;
+        exit(-1);
+    }
     string str = get_input();
     string temp;
     stringstream s(str);
-
-    int i;
-    int j = 0;
-    int len = str.length();
-    int *arr = new int(len*2);
-    char *cshit = NULL;
-    char left_curly = '{';
-    char right_curly = '}';
-
-
+    Set *res = new Set(name);
     while (s >> temp) {
-        const char *check = (temp.c_str());
-        i = (int) strtol(check, &cshit, 10);
-        if (check && *cshit != 0) {
-            if ((check[0] == left_curly && j == 0)) {
-                check++;
-                int k = (int) strtol(check, &cshit, 10);
-                if (check && *cshit == 0)
-                    i = k;
-                else {
-                    cout << "error" << endl;
-                    break;
-                }
-            } else if (check[temp.length() - 1] == right_curly)
-                i = (int) strtol(check, &cshit, 10);
-
-            else {
-                cout << "ERROR" << endl;
-                break;
-            }
-        }
-        arr[j] = i;
-        j++;
-
+        if(isnumeric(temp))
+            res->add(strtoi(temp));
     }
-    size = j;
-    currently_parsed++;
-    int *ret = new int(size);
-    for (int k = 0; k < size; k++) {
-        ret[k] = arr[k];
-    }
-    //delete [] arr;
-    return ret;
-
+    return res;
 }
 
 string Parser::get_input() {
@@ -67,6 +33,40 @@ string Parser::get_input() {
     getline(cin, str);
     return str;
 }
+
+bool Parser::isnumeric(string s) {
+    for (int i = 0; i < s.length(); i++) {
+        if (!isdigit(s[i]))
+            return false;
+    }
+    return true;
+}
+
+int Parser::strtoi(string str){
+    char* p;
+    return (int)strtol(str.c_str(), &p, 10);
+
+}
+
+string Parser :: parse_name() {
+    string name = get_input();
+    if(isValid(name))
+        return name;
+    return "error";
+
+
+}
+bool Parser :: isValid(string candidate){
+    for (int i = 0; i < candidate.length(); i++) {
+        if( !((int)candidate[i] >= 65 && (int)candidate[i] <= 90))
+            return false;
+
+    }
+    return true;
+
+}
+
+
 
 
 
