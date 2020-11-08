@@ -13,7 +13,7 @@ using namespace std;
 
 Set *Parser::parse_set() {
     string name = parse_name();
-    if(!name.compare("error")) {
+    if (!name.compare("error")) {
         cout << "name-error" << endl;
         exit(-1);
     }
@@ -22,7 +22,7 @@ Set *Parser::parse_set() {
     stringstream s(str);
     Set *res = new Set(name);
     while (s >> temp) {
-        if(isnumeric(temp))
+        if (isnumeric(temp))
             res->add(strtoi(temp));
     }
     return res;
@@ -42,29 +42,31 @@ bool Parser::isnumeric(string s) {
     return true;
 }
 
-int Parser::strtoi(string str){
-    char* p;
-    return (int)strtol(str.c_str(), &p, 10);
+int Parser::strtoi(string str) {
+    char *p;
+    return (int) strtol(str.c_str(), &p, 10);
 
 }
 
-string Parser :: parse_name() {
+string Parser::parse_name() {
     string name = get_input();
-    if(isValid(name))
+    if (isValid(name))
         return name;
     return "error";
 
 
 }
-bool Parser :: isValid(string candidate){
+
+bool Parser::isValid(string candidate) {
     for (int i = 0; i < candidate.length(); i++) {
-        if( !((int)candidate[i] >= 65 && (int)candidate[i] <= 90))
+        if (!((int) candidate[i] >= 65 && (int) candidate[i] <= 90))
             return false;
 
     }
     return true;
-
 }
+
+
 
 
 

@@ -7,15 +7,21 @@ using namespace std;
 int main() {
     int i = 0;
     Calculator *calc = new Calculator();
-    while(true) {
+    while (true) {
         calc->add_set();
         i++;
-        if( i == 4 )
+        if (i == 3)
             break;
     }
     calc->print_calc();
-    if(!calc->remove_set("MISHA"))
-        cout << "MISHA's NOT THERE BRO" << endl;
+//    if (!calc->remove_set("MISHA"))
+//        cout << "MISHA's NOT THERE BRO" << endl;
+//    calc->print_calc();
+    if(!calc->set_unite("MISHA", "MASHA", "UNITED"))
+        cout << "NAME ERROR" << endl;
+    calc->print_calc();
+    if(!calc->intersec("MISHA", "MASHA", "CHITUCH"))
+        cout << "NAME ERROR" << endl;
     calc->print_calc();
 
     return 0;

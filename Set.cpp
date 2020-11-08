@@ -13,7 +13,7 @@ Set::Set(string init_name) {
 }
 
 Set::~Set() {
-    delete [ ] arr;
+    delete[] arr;
 
 }
 
@@ -47,7 +47,6 @@ bool Set::add(int element) {
     return true;
 
 
-
 }
 
 void Set::sort(int *array, int size) {
@@ -71,14 +70,24 @@ void Set::print_set() {
     cout << endl;
 }
 
-Set * Set ::unite(Set *other, string result_name) {
-    Set* result = new Set(result_name);
+Set *Set::unite(Set *other, string result_name) {
+    Set *result = new Set(result_name);
     for (int i = 0; i < ord; i++) {
         result->add(arr[i]);
     }
     for (int i = 0; i < other->ord; i++) {
         result->add(other->arr[i]);
     }
+    return result;
+}
+
+Set *Set::intersect(Set *other, string result_name) {
+    Set *result = new Set(result_name);
+    for (int i = 0; i < ord; i++) {
+        if (other->contains(arr[i]))
+            result->add(arr[i]);
+    }
+    return result;
 }
 
 
