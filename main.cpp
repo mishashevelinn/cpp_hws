@@ -17,6 +17,6 @@ int main() {
     if(!calc->remove_set("MISHA"))
         cout << "MISHA's NOT THERE BRO" << endl;
     calc->print_calc();
-    Set *s = new Set("hi");
+
     return 0;
 }

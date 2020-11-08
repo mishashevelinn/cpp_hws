@@ -14,6 +14,7 @@ public:
     bool add_set();
     bool remove_set(string set_name);
     void print_calc();
+    Set * unite(Set*, Set*);
 
 private:
     Parser *parser;
@@ -23,6 +24,10 @@ private:
     void resize_arr();
 
     int find_set(string name);
+
+    bool set_unite(string A, string B, string set_name);
+
+    static bool save_set(Set*);
 };
 
 

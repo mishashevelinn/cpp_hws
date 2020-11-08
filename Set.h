@@ -22,6 +22,7 @@ public:
     string get_name(){return name;}
     void sort(int* array, int size_of_array);
     void print_set();
+    Set * unite(Set *other, string result_name);
 
     virtual ~Set();
 

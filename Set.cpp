@@ -71,6 +71,15 @@ void Set::print_set() {
     cout << endl;
 }
 
+Set * Set ::unite(Set *other, string result_name) {
+    Set* result = new Set(result_name);
+    for (int i = 0; i < ord; i++) {
+        result->add(arr[i]);
+    }
+    for (int i = 0; i < other->ord; i++) {
+        result->add(other->arr[i]);
+    }
+}
 
 
 

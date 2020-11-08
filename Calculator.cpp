@@ -40,6 +40,11 @@ bool Calculator::remove_set(string set_name) {
 
 
 
+bool Calculator :: save_set(Set* set_to_add){
+
+
+}
+
 
 bool Calculator::add_set() {
     Set *set_to_add;
@@ -85,4 +90,17 @@ void Calculator::print_calc() {
     }
     cout << "CALCULATOR CAPACITY, SIZE = " << capacity << ", " << size << endl;
 
+}
+
+bool Calculator::set_unite(string A, string B, string uni_name) {
+    int A_index, B_index;
+    A_index = find_set(A);
+    B_index = find_set(B);
+    if(A_index != -1 || B_index != -1 || !parser->isValid(A) || !parser->isValid(B))
+        return false;
+    Set* united = calc_arr[A_index]->unite(calc_arr[B_index], uni_name);
+    add_set()
+
+
+    return true;
 }
