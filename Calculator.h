@@ -1,12 +1,6 @@
-//
-// Created by misha on 07/11/2020.
-//
-
 #ifndef CPP_HWS_CALCULATOR_H
 #define CPP_HWS_CALCULATOR_H
 
-
-#include "Set.h"
 #include "Parser.h"
 
 class Calculator {
@@ -15,13 +9,15 @@ public:
 
     bool add_set();
 
-    bool remove_set(string set_name);
+    bool remove_set();
 
     void print_calc();
 
-    bool set_unite(string A, string B, string set_name);
+    bool set_unite(const string &A, const string &B, const string &set_name);
 
-    bool intersec(string A, string B, string set_name);
+    bool intersec(const string &A, const string &B, const string &set_name);
+
+    void main_loop();
 
 private:
     Parser *parser;
@@ -31,16 +27,19 @@ private:
 
     void resize_arr();
 
-    int find_set(string name);
+    int find_set(const string &name);
 
     int A_index = 0;
     int B_index = 0;
 
 
-
     bool save_set(Set *);
 
-    bool valid_names(string A, string B, string uni_name);
+    bool valid_names(const string &A, const string &B, const string &res_name);
+
+    string A, B, C;
+
+
 };
 
 

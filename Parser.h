@@ -1,17 +1,9 @@
-//
-// Created by misha on 06/11/2020.
-//
-
 #ifndef CPP_HWS_PARSER_H
 #define CPP_HWS_PARSER_H
 
-#include <iostream>
 #include <sstream>
-#include<string>
 #include <cstdlib>
 #include "Set.h"
-
-using namespace std;
 
 class Parser {
 private:
@@ -35,9 +27,9 @@ public:
 
     int strtoi(string str);
 
-    bool isValid(string candidate);
+    bool valid_name(string candidate);
 
-    bool valid_names(string A, string B, string uni_name);
+
 };
 
 #endif //CPP_HWS_PARSER_H

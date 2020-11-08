@@ -1,15 +1,8 @@
 //
 // Created by misha on 06/11/2020.
 //
-#include <iostream>
-#include <sstream>
-#include<string>
-#include <cstdlib>
+
 #include "Parser.h"
-#include "Set.h"
-
-
-using namespace std;
 
 Set *Parser::parse_set() {
     string name = parse_name();
@@ -50,14 +43,14 @@ int Parser::strtoi(string str) {
 
 string Parser::parse_name() {
     string name = get_input();
-    if (isValid(name))
+    if (valid_name(name))
         return name;
     return "error";
 
 
 }
 
-bool Parser::isValid(string candidate) {
+bool Parser::valid_name(string candidate) {
     for (int i = 0; i < candidate.length(); i++) {
         if (!((int) candidate[i] >= 65 && (int) candidate[i] <= 90))
             return false;

@@ -1,10 +1,6 @@
-#include <iostream>
 #include "Set.h"
 
-//
-// Created by misha on 05/11/2020.
-//
-Set::Set(string init_name) {
+Set::Set(const string &init_name) {
     //remove_duplicates();
     arr_size = ARR_SIZE_INIT;
     arr = new int[arr_size];
@@ -70,7 +66,7 @@ void Set::print_set() {
     cout << endl;
 }
 
-Set *Set::unite(Set *other, string result_name) {
+Set *Set::unite(Set *other, const string &result_name) {
     Set *result = new Set(result_name);
     for (int i = 0; i < ord; i++) {
         result->add(arr[i]);
@@ -81,7 +77,7 @@ Set *Set::unite(Set *other, string result_name) {
     return result;
 }
 
-Set *Set::intersect(Set *other, string result_name) {
+Set *Set::intersect(Set *other, const string &result_name) {
     Set *result = new Set(result_name);
     for (int i = 0; i < ord; i++) {
         if (other->contains(arr[i]))

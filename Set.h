@@ -2,6 +2,7 @@
 // Created by misha on 05/11/2020.
 //
 #include "string"
+#include <iostream>
 
 using namespace std;
 #ifndef CPP_HWS_SET_H
@@ -10,7 +11,7 @@ using namespace std;
 
 class Set {
 public:
-    Set(string name);
+    Set(const string &name);
 
     bool is_empty() { return ord == 0; }
 
@@ -24,13 +25,13 @@ public:
 
     string get_name() { return name; }
 
-    void sort(int *array, int size_of_array);
+    static void sort(int *array, int size_of_array);
 
     void print_set();
 
-    Set *unite(Set *other, string result_name);
+    Set *unite(Set *other, const string &result_name);
 
-    Set* intersect(Set* other, string result_name);
+    Set *intersect(Set *other, const string &result_name);
 
     virtual ~Set();
 
