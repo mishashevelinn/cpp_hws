@@ -17,6 +17,11 @@ public:
 
     bool intersec(const string &A, const string &B, const string &set_name);
 
+    void generate_subsets(Set* set, Set* subset, Calculator* storage, int i = 0);
+
+    void power_set(string name);
+
+
     void main_loop();
 
 private:
@@ -33,11 +38,12 @@ private:
     int B_index = 0;
 
 
-    bool save_set(Set *);
+    bool save_set(Set *set_to_add, bool is_subset = false);
 
     bool valid_names(const string &A, const string &B, const string &res_name);
 
     string A, B, C;
+
 
 
 };

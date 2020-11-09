@@ -30,6 +30,8 @@ public:
     bool valid_name(string candidate);
 
 
+
+
 };
 
 #endif //CPP_HWS_PARSER_H

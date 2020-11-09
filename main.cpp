@@ -5,7 +5,10 @@ using namespace std;
 
 int main() {
     Calculator *calc = new Calculator();
-    calc->main_loop();
+    calc->add_set();
+    cout << "set added";
+    calc->power_set("MISHA");
+
 
     return 0;
 }

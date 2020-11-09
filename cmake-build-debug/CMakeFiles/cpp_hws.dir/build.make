@@ -63,10 +63,10 @@ RM = /snap/clion/129/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/misha/CLionProjects/cpp_hws
+CMAKE_SOURCE_DIR = /home/misha/CLionProjects/cpp_hws1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/misha/CLionProjects/cpp_hws/cmake-build-debug
+CMAKE_BINARY_DIR = /home/misha/CLionProjects/cpp_hws1/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/cpp_hws.dir/depend.make
@@ -79,55 +79,55 @@ include CMakeFiles/cpp_hws.dir/flags.make
 
 CMakeFiles/cpp_hws.dir/main.cpp.o: CMakeFiles/cpp_hws.dir/flags.make
 CMakeFiles/cpp_hws.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/misha/CLionProjects/cpp_hws/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cpp_hws.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp_hws.dir/main.cpp.o -c /home/misha/CLionProjects/cpp_hws/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/misha/CLionProjects/cpp_hws1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cpp_hws.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp_hws.dir/main.cpp.o -c /home/misha/CLionProjects/cpp_hws1/main.cpp
 
 CMakeFiles/cpp_hws.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpp_hws.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/misha/CLionProjects/cpp_hws/main.cpp > CMakeFiles/cpp_hws.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/misha/CLionProjects/cpp_hws1/main.cpp > CMakeFiles/cpp_hws.dir/main.cpp.i
 
 CMakeFiles/cpp_hws.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpp_hws.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/misha/CLionProjects/cpp_hws/main.cpp -o CMakeFiles/cpp_hws.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/misha/CLionProjects/cpp_hws1/main.cpp -o CMakeFiles/cpp_hws.dir/main.cpp.s
 
 CMakeFiles/cpp_hws.dir/Set.cpp.o: CMakeFiles/cpp_hws.dir/flags.make
 CMakeFiles/cpp_hws.dir/Set.cpp.o: ../Set.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/misha/CLionProjects/cpp_hws/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cpp_hws.dir/Set.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp_hws.dir/Set.cpp.o -c /home/misha/CLionProjects/cpp_hws/Set.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/misha/CLionProjects/cpp_hws1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cpp_hws.dir/Set.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp_hws.dir/Set.cpp.o -c /home/misha/CLionProjects/cpp_hws1/Set.cpp
 
 CMakeFiles/cpp_hws.dir/Set.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpp_hws.dir/Set.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/misha/CLionProjects/cpp_hws/Set.cpp > CMakeFiles/cpp_hws.dir/Set.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/misha/CLionProjects/cpp_hws1/Set.cpp > CMakeFiles/cpp_hws.dir/Set.cpp.i
 
 CMakeFiles/cpp_hws.dir/Set.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpp_hws.dir/Set.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/misha/CLionProjects/cpp_hws/Set.cpp -o CMakeFiles/cpp_hws.dir/Set.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/misha/CLionProjects/cpp_hws1/Set.cpp -o CMakeFiles/cpp_hws.dir/Set.cpp.s
 
 CMakeFiles/cpp_hws.dir/Parser.cpp.o: CMakeFiles/cpp_hws.dir/flags.make
 CMakeFiles/cpp_hws.dir/Parser.cpp.o: ../Parser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/misha/CLionProjects/cpp_hws/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cpp_hws.dir/Parser.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp_hws.dir/Parser.cpp.o -c /home/misha/CLionProjects/cpp_hws/Parser.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/misha/CLionProjects/cpp_hws1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cpp_hws.dir/Parser.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp_hws.dir/Parser.cpp.o -c /home/misha/CLionProjects/cpp_hws1/Parser.cpp
 
 CMakeFiles/cpp_hws.dir/Parser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpp_hws.dir/Parser.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/misha/CLionProjects/cpp_hws/Parser.cpp > CMakeFiles/cpp_hws.dir/Parser.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/misha/CLionProjects/cpp_hws1/Parser.cpp > CMakeFiles/cpp_hws.dir/Parser.cpp.i
 
 CMakeFiles/cpp_hws.dir/Parser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpp_hws.dir/Parser.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/misha/CLionProjects/cpp_hws/Parser.cpp -o CMakeFiles/cpp_hws.dir/Parser.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/misha/CLionProjects/cpp_hws1/Parser.cpp -o CMakeFiles/cpp_hws.dir/Parser.cpp.s
 
 CMakeFiles/cpp_hws.dir/Calculator.cpp.o: CMakeFiles/cpp_hws.dir/flags.make
 CMakeFiles/cpp_hws.dir/Calculator.cpp.o: ../Calculator.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/misha/CLionProjects/cpp_hws/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/cpp_hws.dir/Calculator.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp_hws.dir/Calculator.cpp.o -c /home/misha/CLionProjects/cpp_hws/Calculator.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/misha/CLionProjects/cpp_hws1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/cpp_hws.dir/Calculator.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp_hws.dir/Calculator.cpp.o -c /home/misha/CLionProjects/cpp_hws1/Calculator.cpp
 
 CMakeFiles/cpp_hws.dir/Calculator.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpp_hws.dir/Calculator.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/misha/CLionProjects/cpp_hws/Calculator.cpp > CMakeFiles/cpp_hws.dir/Calculator.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/misha/CLionProjects/cpp_hws1/Calculator.cpp > CMakeFiles/cpp_hws.dir/Calculator.cpp.i
 
 CMakeFiles/cpp_hws.dir/Calculator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpp_hws.dir/Calculator.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/misha/CLionProjects/cpp_hws/Calculator.cpp -o CMakeFiles/cpp_hws.dir/Calculator.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/misha/CLionProjects/cpp_hws1/Calculator.cpp -o CMakeFiles/cpp_hws.dir/Calculator.cpp.s
 
 # Object files for target cpp_hws
 cpp_hws_OBJECTS = \
@@ -145,7 +145,7 @@ cpp_hws: CMakeFiles/cpp_hws.dir/Parser.cpp.o
 cpp_hws: CMakeFiles/cpp_hws.dir/Calculator.cpp.o
 cpp_hws: CMakeFiles/cpp_hws.dir/build.make
 cpp_hws: CMakeFiles/cpp_hws.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/misha/CLionProjects/cpp_hws/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable cpp_hws"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/misha/CLionProjects/cpp_hws1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable cpp_hws"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cpp_hws.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -158,6 +158,6 @@ CMakeFiles/cpp_hws.dir/clean:
 .PHONY : CMakeFiles/cpp_hws.dir/clean
 
 CMakeFiles/cpp_hws.dir/depend:
-	cd /home/misha/CLionProjects/cpp_hws/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/misha/CLionProjects/cpp_hws /home/misha/CLionProjects/cpp_hws /home/misha/CLionProjects/cpp_hws/cmake-build-debug /home/misha/CLionProjects/cpp_hws/cmake-build-debug /home/misha/CLionProjects/cpp_hws/cmake-build-debug/CMakeFiles/cpp_hws.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/misha/CLionProjects/cpp_hws1/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/misha/CLionProjects/cpp_hws1 /home/misha/CLionProjects/cpp_hws1 /home/misha/CLionProjects/cpp_hws1/cmake-build-debug /home/misha/CLionProjects/cpp_hws1/cmake-build-debug /home/misha/CLionProjects/cpp_hws1/cmake-build-debug/CMakeFiles/cpp_hws.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/cpp_hws.dir/depend
 

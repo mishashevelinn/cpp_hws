@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/misha/CLionProjects/cpp_hws/Calculator.cpp" "/home/misha/CLionProjects/cpp_hws/cmake-build-debug/CMakeFiles/cpp_hws.dir/Calculator.cpp.o"
-  "/home/misha/CLionProjects/cpp_hws/Parser.cpp" "/home/misha/CLionProjects/cpp_hws/cmake-build-debug/CMakeFiles/cpp_hws.dir/Parser.cpp.o"
-  "/home/misha/CLionProjects/cpp_hws/Set.cpp" "/home/misha/CLionProjects/cpp_hws/cmake-build-debug/CMakeFiles/cpp_hws.dir/Set.cpp.o"
-  "/home/misha/CLionProjects/cpp_hws/main.cpp" "/home/misha/CLionProjects/cpp_hws/cmake-build-debug/CMakeFiles/cpp_hws.dir/main.cpp.o"
+  "/home/misha/CLionProjects/cpp_hws1/Calculator.cpp" "/home/misha/CLionProjects/cpp_hws1/cmake-build-debug/CMakeFiles/cpp_hws.dir/Calculator.cpp.o"
+  "/home/misha/CLionProjects/cpp_hws1/Parser.cpp" "/home/misha/CLionProjects/cpp_hws1/cmake-build-debug/CMakeFiles/cpp_hws.dir/Parser.cpp.o"
+  "/home/misha/CLionProjects/cpp_hws1/Set.cpp" "/home/misha/CLionProjects/cpp_hws1/cmake-build-debug/CMakeFiles/cpp_hws.dir/Set.cpp.o"
+  "/home/misha/CLionProjects/cpp_hws1/main.cpp" "/home/misha/CLionProjects/cpp_hws1/cmake-build-debug/CMakeFiles/cpp_hws.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -36,12 +36,15 @@ bool Calculator::remove_set() {
 }
 
 
-bool Calculator::save_set(Set *set_to_add) {
-    int index = find_set(set_to_add->get_name());
-    if (index != -1) {
-        calc_arr[index] = set_to_add;
-        cout << calc_arr[index]->get_name() << " was replaced by" << set_to_add->get_name() << endl;
-        return true;
+bool Calculator::save_set(Set *set_to_add, bool is_subset) {
+    if(!is_subset)
+    {
+        int index = find_set(set_to_add->get_name());
+        if (index != -1) {
+            calc_arr[index] = set_to_add;
+            cout << calc_arr[index]->get_name() << " was replaced by" << set_to_add->get_name() << endl;
+            return true;
+        }
     }
     if (size < capacity) {
         calc_arr[size] = set_to_add;
@@ -49,7 +52,7 @@ bool Calculator::save_set(Set *set_to_add) {
         return true;
     }
     resize_arr();
-    save_set(set_to_add);
+    save_set(set_to_add, true);
     return true;
 }
 
@@ -57,7 +60,7 @@ bool Calculator::save_set(Set *set_to_add) {
 bool Calculator::add_set() {
     Set *set_to_add;
     set_to_add = parser->parse_set();
-    save_set(set_to_add);
+    save_set(set_to_add, false);
     return true;
 
 }
@@ -93,7 +96,7 @@ bool Calculator::set_unite(const string &A, const string &B, const string &uni_n
     if (!valid_names(A, B, uni_name)) return false;
 
     Set *united = calc_arr[A_index]->unite(calc_arr[B_index], uni_name);
-    save_set(united);
+    save_set(united, false);
     return true;
 }
 
@@ -101,7 +104,7 @@ bool Calculator::intersec(const string &A, const string &B, const string &int_na
     if (!valid_names(A, B, int_name)) return false;
 
     Set *intersection = calc_arr[A_index]->intersect(calc_arr[B_index], int_name);
-    save_set(intersection);
+    save_set(intersection, false);
     return true;
 }
 
@@ -124,6 +127,7 @@ void Calculator::main_loop() {
             case '1':
                 if(add_set()){
                     cout << "set added successfully" << endl;
+                    print_calc();
                     main_loop();
                 }
                 cout << "couldn't add the set" << endl;
@@ -141,3 +145,27 @@ void Calculator::main_loop() {
 
     }
 }
+
+void Calculator::generate_subsets(Set *set, Set *subset, Calculator *storage, int i) {
+    if( i == set->get_ord()){
+        storage->save_set(subset, true);
+        return;
+    }
+    generate_subsets(set, new Set(subset), storage, i + 1);
+    subset->add(set->get(i));
+    generate_subsets(set, new Set(subset), storage, i + 1);
+}
+
+void Calculator::power_set(string name) {
+    int index = find_set(name);
+    if (!parser->valid_name(name) || index == -1){
+        cout << "parse error" << endl;
+    }
+    Calculator* storage = new Calculator();
+    Set* subset = new Set();
+    generate_subsets(calc_arr[index], subset, storage, 0);
+    storage->print_calc();
+
+}
+
+

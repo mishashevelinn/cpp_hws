@@ -8,10 +8,23 @@ Set::Set(const string &init_name) {
     name.assign(init_name);
 }
 
+Set ::Set(Set *other) {
+    arr_size=other->arr_size;
+    ord = other->ord;
+    name.assign(other->name);
+    arr = new int[arr_size];
+    for (int i = 0; i < ord; i++) {
+        this->arr[i] = other->arr[i];
+    }
+
+}
+
+
 Set::~Set() {
     delete[] arr;
 
 }
+Set ::Set() {arr_size = ARR_SIZE_INIT; arr = new int[arr_size]; ord = 0; name.assign("subset");}
 
 bool Set::contains(int element) {
     if (is_empty())
@@ -86,5 +99,10 @@ Set *Set::intersect(Set *other, const string &result_name) {
     return result;
 }
 
+int Set::get(int i) {
+    return arr[i];      //TODO SAFELY OR NOT?
+}
 
 
+void Set ::arr_copy(int *source, int *dest, int len) {
+}

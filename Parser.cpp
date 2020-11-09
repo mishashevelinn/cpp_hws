@@ -23,7 +23,7 @@ Set *Parser::parse_set() {
 
 string Parser::get_input() {
     string str;
-    cin.ignore();
+    //cin.ignore();
     getline(cin, str);
     return str;
 }

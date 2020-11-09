@@ -12,6 +12,8 @@ using namespace std;
 class Set {
 public:
     Set(const string &name);
+    Set();
+    Set(Set *other);
 
     bool is_empty() { return ord == 0; }
 
@@ -33,6 +35,8 @@ public:
 
     Set *intersect(Set *other, const string &result_name);
 
+    int get(int i);
+
     virtual ~Set();
 
 
@@ -41,6 +45,7 @@ private:
     int ord;
     int *arr;
     string name;
+    void arr_copy(int *source, int *dest, int len);
 
 
 };
