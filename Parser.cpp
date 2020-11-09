@@ -23,6 +23,7 @@ Set *Parser::parse_set() {
 
 string Parser::get_input() {
     string str;
+    cin.ignore();
     getline(cin, str);
     return str;
 }
@@ -45,6 +46,7 @@ string Parser::parse_name() {
     string name = get_input();
     if (valid_name(name))
         return name;
+    cout << name << "is not valid" << endl;
     return "error";
 
 

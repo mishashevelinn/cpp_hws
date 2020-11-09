@@ -108,6 +108,7 @@ bool Calculator::intersec(const string &A, const string &B, const string &int_na
 bool Calculator::valid_names(const string &A, const string &B, const string &res_name) {
     A_index = find_set(A);
     B_index = find_set(B);
+
     if (A_index == -1 || B_index == -1 || !parser->valid_name(A) || !parser->valid_name(B) ||
         !parser->valid_name(res_name))
         return false;
@@ -116,14 +117,27 @@ bool Calculator::valid_names(const string &A, const string &B, const string &res
 
 void Calculator::main_loop() {
     char c;
-    while ((c = getchar())) {
-        switch (c) {
-            case '1' :
-                add_set();
-                break;
-            case '2':
-                remove_set();
-                break;
+    cout << "menu\nto add set press 1\nto remove set press 2\n";
+    char opt;
+    while ((opt = getchar()) != '0') {
+        switch (opt) {
+            case '1':
+                if(add_set()){
+                    cout << "set added successfully" << endl;
+                    main_loop();
+                }
+                cout << "couldn't add the set" << endl;
+                main_loop();
+            case '2' :
+                if(remove_set()){
+                    cout << "set has been removed" << endl;
+                    main_loop();
+                }
+                cout << "couldn't remove the set" << endl;
+                main_loop();
+
         }
+
+
     }
 }
