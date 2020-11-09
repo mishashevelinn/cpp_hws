@@ -73,10 +73,28 @@ void Set::sort(int *array, int size) {
 
 
 void Set::print_set() {
-    for (int i = 0; i < ord; i++) {
-        cout << arr[i] << " ";
+    switch (ord) {
+        case 0:
+            cout << "{ }";
+            break;
+        case 1:
+            cout << '{' << arr[0] << '}';
+            break;
+        default:for (int i = 0; i < ord; i++) {
+                if (i == ord -1 ){
+                    cout << arr[i] << '}';
+                    continue;
+                }
+                if (i == 0){
+                    cout << '{' << arr[i] << ',';
+                    continue;
+                }
+                cout << arr[i] << ',';
+
+
+            }
     }
-    cout << endl;
+
 }
 
 Set *Set::unite(Set *other, const string &result_name) {
@@ -104,5 +122,18 @@ int Set::get(int i) {
 }
 
 
-void Set ::arr_copy(int *source, int *dest, int len) {
+bool Set::has_larger_elements(Set *other) {
+    for (int i = 0; i < ord; i++) {
+        if (arr[i] > other->arr[i] )
+            return true;
+    }
+    return false;
+}
+
+bool Set::compare(Set *other) {
+    if(this->ord > other->ord)
+        return true;
+    else if(this->ord == other->ord)
+        return this->has_larger_elements(other);
+    return false;
 }

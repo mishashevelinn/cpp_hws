@@ -80,15 +80,16 @@ void Calculator::resize_arr() {
 }
 
 void Calculator::print_calc() {
-    for (int i = 0; i < size; i++) {
-        cout << "Set no " << i + 1 << ": " << calc_arr[i]->get_name() << endl;
-        cout << "Elements of " << calc_arr[i]->get_name() << ':' << endl;
+    nested_sort(calc_arr, size);
+    cout << "{ ";
+    calc_arr[0]->print_set();
+    cout << ", ";
+    for (int i = 1; i < size-1; i++) {
         calc_arr[i]->print_set();
-        cout << "Capacity is " << calc_arr[i]->get_size() << endl;
-        cout << "Order is " << calc_arr[i]->get_ord() << endl;
-        cout << endl;
+        cout << ", ";
     }
-    cout << "CALCULATOR CAPACITY, SIZE = " << capacity << ", " << size << endl;
+    calc_arr[size-1]->print_set();
+    cout << '}';
 
 }
 
@@ -168,4 +169,16 @@ void Calculator::power_set(string name) {
 
 }
 
-
+void Calculator::nested_sort(Set **array, int size) {
+    int j;
+    Set  *key;
+    for (int i = 1; i < size; i++) {
+        key = array[i];
+        j = i;
+        while (j > 0 && array[j - 1]->compare(key)) {
+            array[j] = array[j - 1];
+            j--;
+        }
+        array[j] = key;
+    }
+}

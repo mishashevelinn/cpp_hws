@@ -21,8 +21,10 @@ public:
 
     void power_set(string name);
 
+    void nested_sort(Set **array, int size);
 
     void main_loop();
+
 
 private:
     Parser *parser;
@@ -41,10 +43,6 @@ private:
     bool save_set(Set *set_to_add, bool is_subset = false);
 
     bool valid_names(const string &A, const string &B, const string &res_name);
-
-    string A, B, C;
-
-
 
 };
 

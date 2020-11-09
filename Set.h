@@ -39,6 +39,12 @@ public:
 
     virtual ~Set();
 
+    bool compare(Set * other);
+
+    bool has_larger_elements(Set* other);
+
+    bool is_of_bigger_size_then(Set* other) const;
+
 
 private:
     int arr_size;

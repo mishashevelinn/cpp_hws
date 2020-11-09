@@ -5,10 +5,12 @@ using namespace std;
 
 int main() {
     Calculator *calc = new Calculator();
+    Set misha = new Set("MISHA");
+    for (int i = 0; i < 4; i++) {
+        misha.add(i);
+    }
     calc->add_set();
-    cout << "set added";
     calc->power_set("MISHA");
-
 
     return 0;
 }
