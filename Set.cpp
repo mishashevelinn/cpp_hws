@@ -78,7 +78,10 @@ void Set::sort(int *array, int size) {
 }
 
 
-void Set::print_set() {
+void Set::print_set(bool for_P) {
+    if(!for_P) {
+        cout << name << '=';
+    }
     switch (ord) {
         case 0:
             cout << "{ }";
@@ -140,4 +143,10 @@ bool Set::compare(Set *other) {
     else if (this->ord == other->ord)
         return this->has_larger_elements(other);
     return false;
+}
+
+void Set::set_name(string name) {
+    this->name = name;
+
+
 }

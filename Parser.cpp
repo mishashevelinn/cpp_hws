@@ -1,23 +1,34 @@
 #include "Parser.h"
 
-Set *Parser::parse_set() {
+
+bool Parser::parse_set(Set *set) {
     cin.ignore();
     string name = parse_name();
     if (!name.compare("error")) {
-        cout << "name-error" << endl;
-        exit(-1);
+        cerr << IN_ERROR << endl;
+        return false;
     }
+    set->set_name(name);
 
     string str;
     getline(cin, str);
     string temp;
-    stringstream s(str);
-    Set *res = new Set(name);
-    while (s >> temp) {
-        if (isnumeric(temp))
-            res->add(strtoi(temp));
+    if (str[0] != '{' || str[str.length() - 1 ] != '}') {
+        cerr << IN_ERROR << endl;
+        return false;
     }
-    return res;
+    str.erase(str.length()-1, 1);
+        str.erase(0,1);
+
+    stringstream s(str);
+    while (s >> temp) {
+        if (!isnumeric(temp)) {
+            cerr << IN_ERROR;
+            return false;
+        }
+        set->add(strtoi(temp));
+    }
+    return true;
 }
 
 string Parser::get_input() {
@@ -28,7 +39,9 @@ string Parser::get_input() {
 }
 
 bool Parser::isnumeric(string s) {
-    for (int i = 0; i < s.length(); i++) {
+    if(!isdigit(s[0]) && s[0] != '-')
+        return false;
+    for (int i = 1; i < s.length(); i++) {
         if (!isdigit(s[i]))
             return false;
     }
@@ -45,10 +58,7 @@ string Parser::parse_name() {
     string name = get_input();
     if (valid_name(name))
         return name;
-    cout << name << "is not valid" << endl;
     return "error";
-
-
 }
 
 bool Parser::valid_name(string candidate) {
@@ -59,8 +69,13 @@ bool Parser::valid_name(string candidate) {
     return true;
 }
 
+bool is_proper_set(string test){
+    if (test[0] != '{' || test[test.length() - 1 ] != '}')
+        return false;
+    test.erase(0);
+    test.erase(test.length() - 1);
 
-
+}
 
 
 

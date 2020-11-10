@@ -26,13 +26,15 @@ public:
 
     static void sort(int *array, int size_of_array);
 
-    void print_set();
+    void print_set(bool for_P);
 
     Set *unite(Set *other, const string &result_name);
 
     Set *intersect(Set *other, const string &result_name);
 
     int get(int i);
+
+    void set_name(string name);
 
     virtual ~Set();
 

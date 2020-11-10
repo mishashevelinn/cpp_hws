@@ -6,13 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/misha/CLionProjects/cpp_hws1/Calculator.cpp
-cstdio
--
-Calculator.h
-/home/misha/CLionProjects/cpp_hws1/Calculator.h
-
-/home/misha/CLionProjects/cpp_hws1/Calculator.h
+/home/misha/CLionProjects/cpp_hws1/Parser.cpp
 Parser.h
 /home/misha/CLionProjects/cpp_hws1/Parser.h
 

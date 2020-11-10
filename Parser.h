@@ -5,6 +5,9 @@
 #include <cstdlib>
 #include "Set.h"
 
+#define IN_ERROR "ERROR: invalid input"
+
+
 class Parser {
 private:
     int currently_parsed;
@@ -15,7 +18,7 @@ private:
 
 
 public:
-    Set *parse_set();
+    bool parse_set(Set *set);
 
     int get_size() { return size; }
 

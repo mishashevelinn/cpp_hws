@@ -2,6 +2,9 @@
 #define CPP_HWS_CALCULATOR_H
 
 #include "Parser.h"
+#include <stdio.h>
+
+#define NAME_ERROR( x ) #x
 
 class Calculator {
 public:
@@ -42,9 +45,17 @@ private:
 
     bool save_set(Set *set_to_add, bool is_subset = false);
 
-    bool valid_names(const string &A, const string &B, const string &res_name);
+    bool param_check(const string &A, const string &B, const string &res_name);
 
     bool calc_print_set();
+
+    void menu();
+
+    bool param_check(const string &A);
+
+    void print_calc(string name);
+
+    void name_error(string param);
 };
 
 

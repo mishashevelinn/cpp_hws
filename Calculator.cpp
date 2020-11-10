@@ -22,16 +22,16 @@ bool Calculator::remove_set() {
     cin.ignore();
     const string &set_name = parser->parse_name();
     int index = find_set(set_name);
-    if ((set_name == "error") || index == -1) return false;
 
-    for (int j = index; j < size - 1; j++) {
+    if (!param_check(set_name))
+        return false;
+
+    for (int j = A_index; j < size - 1; j++) {
         calc_arr[j] = calc_arr[j + 1];
     }
-
     size--;
     return true;
 }
-
 
 bool Calculator::save_set(Set *set_to_add, bool is_subset) {
     if (!is_subset) {
@@ -52,14 +52,12 @@ bool Calculator::save_set(Set *set_to_add, bool is_subset) {
     return true;
 }
 
-
 bool Calculator::add_set() {
-    Set *set_to_add;
-    set_to_add = parser->parse_set();
-    //set_to_add->print_set();
+    Set *set_to_add = new Set();
+    if (!parser->parse_set(set_to_add))
+        return false;
     save_set(set_to_add, false);
     return true;
-
 }
 
 void Calculator::resize_arr() {
@@ -76,18 +74,51 @@ void Calculator::resize_arr() {
     capacity = new_capacity;
 }
 
+void Calculator::print_calc(string name) {
+    cout << "P(" << name << ')' << "=";
+    if (size == 0) {
+        cout << "{}" << endl;
+        return;
+    }
+    if (size == 1) {
+        cout << '{';
+        calc_arr[0]->print_set(true);
+        cout << " }";
+        return;
+    }
+    nested_sort(calc_arr, size);
+    cout << "{";
+    calc_arr[0]->print_set(true);
+    cout << ",";
+    for (int i = 1; i < size - 1; i++) {
+        calc_arr[i]->print_set(true);
+        cout << ",";
+    }
+    calc_arr[size - 1]->print_set(true);
+    cout << "}" << endl;
+}
+
 void Calculator::print_calc() {
-    if(size == 1) { cout << "{ "; calc_arr[0]->print_set(); cout << " }"; return;}
+    if (size == 0) {
+        cout << "{}" << endl;
+        return;
+    }
+    if (size == 1) {
+        cout << "{";
+        calc_arr[0]->print_set(true);
+        cout << " }";
+        return;
+    }
     nested_sort(calc_arr, size);
     cout << "{ ";
-    calc_arr[0]->print_set();
+    calc_arr[0]->print_set(true);
     cout << ", ";
-    for (int i = 1; i < size-1; i++) {
-        calc_arr[i]->print_set();
+    for (int i = 1; i < size - 1; i++) {
+        calc_arr[i]->print_set(true);
         cout << ", ";
     }
-    calc_arr[size-1]->print_set();
-    cout << " }";
+    calc_arr[size - 1]->print_set(true);
+    cout << "}";
     cout << "calc size is " << size;
 
 }
@@ -104,72 +135,96 @@ bool Calculator::set_unite() {
     s >> A;
     s >> B;
     s >> uni_name;
-    if (!valid_names(A, B, uni_name)) {
-        cout << A << " ," << B << "names are not valid";
+    if (!param_check(A, B, uni_name)) {
         return false;
     }
 
     Set *united = calc_arr[A_index]->unite(calc_arr[B_index], uni_name);
-    if (save_set(united, false))
-        return true;
-    cout << "calculator couldn't add a united set";
-    return false;
+    save_set(united, false);
+    return true;
 }
 
 bool Calculator::intersec() {
     string A;
     string B;
-    string uni_name;
+    string inte_name;
     string test;
     cin.ignore();
     getline(cin, test);
     stringstream s(test);
     s >> A;
     s >> B;
-    s >> uni_name;
-    if (!valid_names(A, B, uni_name)) return false;
+    s >> inte_name;
+    if (!param_check(A, B, inte_name)) return false;
 
-    Set *intersection = calc_arr[A_index]->intersect(calc_arr[B_index], uni_name);
+    Set *intersection = calc_arr[A_index]->intersect(calc_arr[B_index], inte_name);
     save_set(intersection, false);
     return true;
 }
 
-bool Calculator::valid_names(const string &A, const string &B, const string &res_name) {
+bool Calculator::param_check(const string &A, const string &B, const string &res_name) {
     A_index = find_set(A);
     B_index = find_set(B);
 
-    if (A_index == -1 || B_index == -1 || !parser->valid_name(A) || !parser->valid_name(B) ||
-        !parser->valid_name(res_name))
+    if (!parser->valid_name(A) || !parser->valid_name(B) || !parser->valid_name(res_name)) {
+        cerr << IN_ERROR;
         return false;
+    }
+
+    if (A_index == -1) {
+        name_error(A);
+        return false;
+    }
+    if (B_index == -1) {
+        name_error(B);
+        return false;
+    }
+    return true;
+}
+
+bool Calculator::param_check(const string &A) {
+    A_index = find_set(A);
+    if (!parser->valid_name(A)) {
+        cerr << IN_ERROR;
+        return false;
+    }
+    if (A_index == -1) {
+        name_error(A);
+        return false;
+    }
     return true;
 }
 
 void Calculator::main_loop() {
-    cout << "menu\nto add set press 1\nto remove set press 2\n";
+    menu();
     char opt;
     while ((cin >> opt)) {
         switch (opt) {
             case '1':
-                if (!add_set()) { cout << "set added successfully" << endl; }
+                if (!add_set()) { cout << "failed to add a set" << endl; }
+                print_calc();
                 main_loop();
             case '2' :
                 if (!remove_set()) { cout << "couldn't remove the set" << endl; }
+                print_calc();
                 main_loop();
+
             case '3':
                 if (!set_unite()) { cout << "failed to unite" << endl; }
+                print_calc();
                 main_loop();
             case '4':
-                if(!intersec()) { cout << "failed to intersec" << endl;}
+                if (!intersec()) { cout << "failed to intersec" << endl; }
                 print_calc();
                 main_loop();
             case '5' :
-                if(!power_set()){cout << "can't generate power set";}
+                if (!power_set()) { cout << "can't generate power set"; }
                 main_loop();
             case '6':
-                if(!calc_print_set()){cout << "can't print set";}
+                if (!calc_print_set()) { cout << "can't print set"; }
                 main_loop();
             default:
-                cout << "No such option" << endl;
+                cerr << "ERROR: invalid command; type 0 for exit" << endl;
                 main_loop();
         }
 
@@ -194,15 +249,17 @@ bool Calculator::power_set() {
     getline(cin, test);
     stringstream s(test);
     s >> A;
-    int index = find_set(A);
-    if (!parser->valid_name(A) || index == -1) {
-        cout << "parse error" << endl;
+
+    if (!param_check(A)) {
         return false;
     }
+
     Calculator *storage = new Calculator();
     Set *subset = new Set();
-    generate_subsets(calc_arr[index], subset, storage, 0);
-    storage->print_calc();
+
+    generate_subsets(calc_arr[A_index], subset, storage, 0);
+    storage->print_calc(calc_arr[A_index]->get_name());
+
     delete storage;
     return true;
 
@@ -222,17 +279,47 @@ void Calculator::nested_sort(Set **array, int size) {
     }
 }
 
-bool Calculator::calc_print_set(){
+bool Calculator::calc_print_set() {
     string A;
     cin.ignore();
     getline(cin, A);
     int index = find_set(A);
-    if(!parser->valid_name(A) || index == -1 ) {
+    if (!parser->valid_name(A) || index == -1) {
         cout << "invalid name while printing" << endl;
         return false;
     }
-    calc_arr[index]->print_set();
+    calc_arr[index]->print_set(false);
     return true;
+}
 
+void Calculator::menu() {
+    cout.width(18);
+    cout << "Main Menu" << endl;
+    cout << "Add a set" << " ";
+    cout.width(16);
+    cout.precision(20);
+    cout << "(1)" << " " << endl;
+    cout.precision(5);
+    cout << "Delete a set" << " ";
+    cout.width(13);
+    cout << "(2)" << endl;
+    cout << "Unite two sets" << " ";
+    cout.width(11);
+    cout << "(3)" << endl;
+    cout << "Intersect two sets" << " ";
+    cout.width(7);
+    cout << "(4)" << endl;
+    cout << "Generate a power set" << " ";
+    cout.width(5);
+    cout << "(5)" << endl;
+    cout << "Print a set" << " ";
+    cout.width(14);
+    cout << "(6)" << endl;
+    cout << "Exit" << " ";
+    cout.width(21);
+    cout << "(7)" << endl;
+}
 
+void Calculator::name_error(string param) {
+    cerr << "ERROR: " << param << " does not exist" << endl;
 }
