@@ -6,9 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/misha/CLionProjects/cpp_hws1/Parser.cpp
+/home/misha/CLionProjects/cpp_hws1/Calculator.cpp
+cstdio
+-
+Calculator.h
+/home/misha/CLionProjects/cpp_hws1/Calculator.h
+
+/home/misha/CLionProjects/cpp_hws1/Calculator.h
 Parser.h
 /home/misha/CLionProjects/cpp_hws1/Parser.h
+stdio.h
+-
 
 /home/misha/CLionProjects/cpp_hws1/Parser.h
 sstream
@@ -23,4 +31,10 @@ string
 /home/misha/CLionProjects/cpp_hws1/string
 iostream
 -
+
+/home/misha/CLionProjects/cpp_hws1/main.cpp
+iostream
+-
+Calculator.h
+/home/misha/CLionProjects/cpp_hws1/Calculator.h
 
