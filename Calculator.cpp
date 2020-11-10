@@ -1,7 +1,3 @@
-//
-// Created by misha on 07/11/2020.
-//
-
 #include <cstdio>
 #include "Calculator.h"
 
@@ -23,6 +19,7 @@ int Calculator::find_set(const string &name) {
 
 
 bool Calculator::remove_set() {
+    cin.ignore();
     const string &set_name = parser->parse_name();
     int index = find_set(set_name);
     if ((set_name == "error") || index == -1) return false;
@@ -37,8 +34,7 @@ bool Calculator::remove_set() {
 
 
 bool Calculator::save_set(Set *set_to_add, bool is_subset) {
-    if(!is_subset)
-    {
+    if (!is_subset) {
         int index = find_set(set_to_add->get_name());
         if (index != -1) {
             calc_arr[index] = set_to_add;
@@ -60,6 +56,7 @@ bool Calculator::save_set(Set *set_to_add, bool is_subset) {
 bool Calculator::add_set() {
     Set *set_to_add;
     set_to_add = parser->parse_set();
+    //set_to_add->print_set();
     save_set(set_to_add, false);
     return true;
 
@@ -80,6 +77,7 @@ void Calculator::resize_arr() {
 }
 
 void Calculator::print_calc() {
+    if(size == 1) { cout << "{ "; calc_arr[0]->print_set(); cout << " }"; return;}
     nested_sort(calc_arr, size);
     cout << "{ ";
     calc_arr[0]->print_set();
@@ -89,22 +87,49 @@ void Calculator::print_calc() {
         cout << ", ";
     }
     calc_arr[size-1]->print_set();
-    cout << '}';
+    cout << " }";
+    cout << "calc size is " << size;
 
 }
 
-bool Calculator::set_unite(const string &A, const string &B, const string &uni_name) {
-    if (!valid_names(A, B, uni_name)) return false;
+
+bool Calculator::set_unite() {
+    string A;
+    string B;
+    string uni_name;
+    string test;
+    cin.ignore();
+    getline(cin, test);
+    stringstream s(test);
+    s >> A;
+    s >> B;
+    s >> uni_name;
+    if (!valid_names(A, B, uni_name)) {
+        cout << A << " ," << B << "names are not valid";
+        return false;
+    }
 
     Set *united = calc_arr[A_index]->unite(calc_arr[B_index], uni_name);
-    save_set(united, false);
-    return true;
+    if (save_set(united, false))
+        return true;
+    cout << "calculator couldn't add a united set";
+    return false;
 }
 
-bool Calculator::intersec(const string &A, const string &B, const string &int_name) {
-    if (!valid_names(A, B, int_name)) return false;
+bool Calculator::intersec() {
+    string A;
+    string B;
+    string uni_name;
+    string test;
+    cin.ignore();
+    getline(cin, test);
+    stringstream s(test);
+    s >> A;
+    s >> B;
+    s >> uni_name;
+    if (!valid_names(A, B, uni_name)) return false;
 
-    Set *intersection = calc_arr[A_index]->intersect(calc_arr[B_index], int_name);
+    Set *intersection = calc_arr[A_index]->intersect(calc_arr[B_index], uni_name);
     save_set(intersection, false);
     return true;
 }
@@ -120,27 +145,32 @@ bool Calculator::valid_names(const string &A, const string &B, const string &res
 }
 
 void Calculator::main_loop() {
-    char c;
     cout << "menu\nto add set press 1\nto remove set press 2\n";
     char opt;
-    while ((opt = getchar()) != '0') {
+    while ((cin >> opt)) {
         switch (opt) {
             case '1':
-                if(add_set()){
-                    cout << "set added successfully" << endl;
-                    print_calc();
-                    main_loop();
-                }
-                cout << "couldn't add the set" << endl;
+                if (!add_set()) { cout << "set added successfully" << endl; }
                 main_loop();
             case '2' :
-                if(remove_set()){
-                    cout << "set has been removed" << endl;
-                    main_loop();
-                }
-                cout << "couldn't remove the set" << endl;
+                if (!remove_set()) { cout << "couldn't remove the set" << endl; }
                 main_loop();
-
+            case '3':
+                if (!set_unite()) { cout << "failed to unite" << endl; }
+                main_loop();
+            case '4':
+                if(!intersec()) { cout << "failed to intersec" << endl;}
+                print_calc();
+                main_loop();
+            case '5' :
+                if(!power_set()){cout << "can't generate power set";}
+                main_loop();
+            case '6':
+                if(!calc_print_set()){cout << "can't print set";}
+                main_loop();
+            default:
+                cout << "No such option" << endl;
+                main_loop();
         }
 
 
@@ -148,7 +178,7 @@ void Calculator::main_loop() {
 }
 
 void Calculator::generate_subsets(Set *set, Set *subset, Calculator *storage, int i) {
-    if( i == set->get_ord()){
+    if (i == set->get_ord()) {
         storage->save_set(subset, true);
         return;
     }
@@ -157,21 +187,30 @@ void Calculator::generate_subsets(Set *set, Set *subset, Calculator *storage, in
     generate_subsets(set, new Set(subset), storage, i + 1);
 }
 
-void Calculator::power_set(string name) {
-    int index = find_set(name);
-    if (!parser->valid_name(name) || index == -1){
+bool Calculator::power_set() {
+    string A;
+    string test;
+    cin.ignore();
+    getline(cin, test);
+    stringstream s(test);
+    s >> A;
+    int index = find_set(A);
+    if (!parser->valid_name(A) || index == -1) {
         cout << "parse error" << endl;
+        return false;
     }
-    Calculator* storage = new Calculator();
-    Set* subset = new Set();
+    Calculator *storage = new Calculator();
+    Set *subset = new Set();
     generate_subsets(calc_arr[index], subset, storage, 0);
     storage->print_calc();
+    delete storage;
+    return true;
 
 }
 
 void Calculator::nested_sort(Set **array, int size) {
     int j;
-    Set  *key;
+    Set *key;
     for (int i = 1; i < size; i++) {
         key = array[i];
         j = i;
@@ -181,4 +220,19 @@ void Calculator::nested_sort(Set **array, int size) {
         }
         array[j] = key;
     }
+}
+
+bool Calculator::calc_print_set(){
+    string A;
+    cin.ignore();
+    getline(cin, A);
+    int index = find_set(A);
+    if(!parser->valid_name(A) || index == -1 ) {
+        cout << "invalid name while printing" << endl;
+        return false;
+    }
+    calc_arr[index]->print_set();
+    return true;
+
+
 }

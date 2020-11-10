@@ -13,15 +13,15 @@ public:
 
     void print_calc();
 
-    bool set_unite(const string &A, const string &B, const string &set_name);
+    bool set_unite();
 
-    bool intersec(const string &A, const string &B, const string &set_name);
+    bool intersec();
 
     void generate_subsets(Set* set, Set* subset, Calculator* storage, int i = 0);
 
-    void power_set(string name);
+    bool power_set();
 
-    void nested_sort(Set **array, int size);
+    static void nested_sort(Set **array, int size);
 
     void main_loop();
 
@@ -44,6 +44,7 @@ private:
 
     bool valid_names(const string &A, const string &B, const string &res_name);
 
+    bool calc_print_set();
 };
 
 

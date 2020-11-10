@@ -1,16 +1,15 @@
-//
-// Created by misha on 06/11/2020.
-//
-
 #include "Parser.h"
 
 Set *Parser::parse_set() {
+    cin.ignore();
     string name = parse_name();
     if (!name.compare("error")) {
         cout << "name-error" << endl;
         exit(-1);
     }
-    string str = get_input();
+
+    string str;
+    getline(cin, str);
     string temp;
     stringstream s(str);
     Set *res = new Set(name);
@@ -23,8 +22,8 @@ Set *Parser::parse_set() {
 
 string Parser::get_input() {
     string str;
-    //cin.ignore();
     getline(cin, str);
+    char c;
     return str;
 }
 
@@ -56,7 +55,6 @@ bool Parser::valid_name(string candidate) {
     for (int i = 0; i < candidate.length(); i++) {
         if (!((int) candidate[i] >= 65 && (int) candidate[i] <= 90))
             return false;
-
     }
     return true;
 }

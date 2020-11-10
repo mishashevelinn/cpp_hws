@@ -6,11 +6,13 @@ using namespace std;
 int main() {
     Calculator *calc = new Calculator();
     Set misha = new Set("MISHA");
-    for (int i = 0; i < 4; i++) {
-        misha.add(i);
-    }
-    calc->add_set();
-    calc->power_set("MISHA");
-
-    return 0;
+    calc->main_loop();
+//    calc->add_set();
+//    calc->add_set();
+//    if(calc->set_unite())
+//        cout << "united sed added";
+//    else
+//        cout << "falid to unite";
+//    calc->print_calc();
+//    return 0;
 }
