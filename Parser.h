@@ -16,25 +16,17 @@ private:
 
     int size;
 
+    int strtoi(string str);
+
+    bool isnumeric(string s);
+
 
 public:
     bool parse_set(Set *set);
 
-    int get_size() { return size; }
-
-    int get_count() { return currently_parsed; }
-
-    bool isnumeric(string s);
-
     string parse_name();
 
-    int strtoi(string str);
-
     bool valid_name(string candidate);
-
-
-
-
 };
 
 #endif //CPP_HWS_PARSER_H

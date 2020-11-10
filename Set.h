@@ -9,7 +9,9 @@ using namespace std;
 class Set {
 public:
     Set(const string &name);
+
     Set();
+
     Set(Set *other);
 
     bool is_empty() { return ord == 0; }
@@ -38,11 +40,11 @@ public:
 
     virtual ~Set();
 
-    bool compare(Set * other);
+    bool is_bigger(Set *other);
 
-    bool has_larger_elements(Set* other);
+    bool has_larger_elements(Set *other);
 
-    bool is_of_bigger_size_then(Set* other) const;
+    bool is_of_bigger_size_then(Set *other) const;
 
 
 private:
@@ -50,6 +52,7 @@ private:
     int ord;
     int *arr;
     string name;
+
     void arr_copy(int *source, int *dest, int len);
 
 
