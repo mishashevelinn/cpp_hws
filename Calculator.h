@@ -4,7 +4,8 @@
 #include "Parser.h"
 #include <stdio.h>
 
-#define NAME_ERROR(x) #x
+static int A_index = 0;
+static int B_index = 0;
 
 class Calculator {
 public:
@@ -23,8 +24,7 @@ private:
     Parser *parser;
 
 
-    int A_index = 0;
-    int B_index = 0;
+
 
     bool add_set();
 
@@ -50,7 +50,8 @@ private:
     bool calc_print_set();
 
     void generate_subsets(Set *set, Set *subset, Calculator *storage, int i = 0);
-    bool param_check(const string &A, const string &B, const string &res_name);
+
+    bool param_check(const string &A, const string &B);
 
     bool param_check(const string &A);
 

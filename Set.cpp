@@ -1,7 +1,7 @@
 #include "Set.h"
 
 Set::Set(const string &init_name) {
-    arr_size = ARR_SIZE_INIT;
+    arr_size = INITIAL_ARRAY_SIZE;
     arr = new int[arr_size];
     ord = 0;
     name.assign(init_name);
@@ -23,7 +23,7 @@ Set::~Set() {
 }
 
 Set::Set() {
-    arr_size = ARR_SIZE_INIT;
+    arr_size = INITIAL_ARRAY_SIZE;
     arr = new int[arr_size];
     ord = 0;
     name.assign("subset");
@@ -113,6 +113,7 @@ void Set::print_set(bool for_P) {
                 cout << arr[i] << ',';
             }
     }
+    if(!for_P) cout << endl;
 }
 
 void Set::sort(int *array, int size) {

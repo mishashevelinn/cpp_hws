@@ -4,7 +4,7 @@
 using namespace std;
 #ifndef CPP_HWS_SET_H
 #define CPP_HWS_SET_H
-#define ARR_SIZE_INIT 12;
+#define INITIAL_ARRAY_SIZE 12;
 
 class Set {
 public:

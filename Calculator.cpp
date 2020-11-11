@@ -3,7 +3,7 @@
 
 Calculator::Calculator() {
     size = 0;
-    capacity = ARR_SIZE_INIT;
+    capacity = INITIAL_ARRAY_SIZE;
     calc_arr = new Set *[capacity];
     parser = new Parser();
 }
@@ -40,8 +40,13 @@ bool Calculator::set_unite() {
     stringstream s(test);
     s >> A;
     s >> B;
-    s >> uni_name;
-    if (!param_check(A, B, uni_name)) {
+    if (!param_check(A, B)) {
+        return false;
+    }
+
+    getline(cin, uni_name);
+    if (!parser->valid_name(uni_name)) {
+        cerr << IN_ERROR<< endl;
         return false;
     }
 
@@ -60,8 +65,14 @@ bool Calculator::intersect() {
     stringstream s(test);
     s >> A;
     s >> B;
-    s >> inte_name;
-    if (!param_check(A, B, inte_name)) return false;
+    if (!param_check(A, B)) return false;
+
+    getline(cin, inte_name);
+    if (!parser->valid_name(inte_name)) {
+        cerr << IN_ERROR << endl;
+        return false;
+    }
+
 
     Set *intersection = calc_arr[A_index]->intersect(calc_arr[B_index], inte_name);
     save_set(intersection, false);
@@ -153,7 +164,7 @@ void Calculator::print_calc(string name) {
     if (size == 1) {
         cout << '{';
         calc_arr[0]->print_set(true);
-        cout << " }";
+        cout << "}";
         return;
     }
     nested_sort(calc_arr, size);
@@ -165,7 +176,7 @@ void Calculator::print_calc(string name) {
         cout << ",";
     }
     calc_arr[size - 1]->print_set(true);
-    cout << "}" << endl;
+    cout << "}\n" << endl;
 }
 
 void Calculator::nested_sort(Set **array, int size) {
@@ -183,17 +194,20 @@ void Calculator::nested_sort(Set **array, int size) {
 }
 
 
-bool Calculator::param_check(const string &A, const string &B, const string &res_name) {
+bool Calculator::param_check(const string &A, const string &B) {
     A_index = find_set(A);
     B_index = find_set(B);
 
-    if (!parser->valid_name(A) || !parser->valid_name(B) || !parser->valid_name(res_name)) {
-        cerr << IN_ERROR;
+    if (!parser->valid_name(A)) {
+        cerr << IN_ERROR << endl;
         return false;
     }
-
     if (A_index == -1) {
         name_error(A);
+        return false;
+    }
+    if (!parser->valid_name(B)){
+        cerr << IN_ERROR << endl;
         return false;
     }
     if (B_index == -1) {
@@ -206,7 +220,7 @@ bool Calculator::param_check(const string &A, const string &B, const string &res
 bool Calculator::param_check(const string &A) {
     A_index = find_set(A);
     if (!parser->valid_name(A)) {
-        cerr << IN_ERROR;
+        cerr << IN_ERROR << endl;
         return false;
     }
     if (A_index == -1) {
@@ -231,96 +245,49 @@ bool Calculator::calc_print_set() {
 
 
 void Calculator::main_loop() {
+    bool ex = false;
     menu();
     char opt;
-    while ((cin >> opt)) {
+    while (!ex && (cin >> opt)) {
         switch (opt) {
             case '1':
                 add_set();
-                print_calc();
-                main_loop();
+                //print_calc();
+                break;
             case '2' :
                 remove_set();
-                print_calc();
-                main_loop();
-
+                //print_calc();
+                break;
             case '3':
                 set_unite();
-                print_calc();
-                main_loop();
+                //print_calc();
+                break;
             case '4':
                 intersect();
-                print_calc();
-                main_loop();
+                //print_calc();
+                break;
             case '5' :
                 power_set();
-                main_loop();
+                break;
             case '6':
                 calc_print_set();
-                main_loop();
+                break;
+            case '0':
+                ex = true;
+                break;
             default:
                 cerr << "ERROR: invalid command; type 0 for exit" << endl;
-                main_loop();
+                break;
         }
-
+        if(!ex){menu();}
 
     }
 }
 
 void Calculator::menu() {
-    cout.width(18);
-    cout << "Main Menu" << endl;
-    cout << "Add a set" << " ";
-    cout.width(16);
-    cout.precision(20);
-    cout << "(1)" << " " << endl;
-    cout.precision(5);
-    cout << "Delete a set" << " ";
-    cout.width(13);
-    cout << "(2)" << endl;
-    cout << "Unite two sets" << " ";
-    cout.width(11);
-    cout << "(3)" << endl;
-    cout << "Intersect two sets" << " ";
-    cout.width(7);
-    cout << "(4)" << endl;
-    cout << "Generate a power set" << " ";
-    cout.width(5);
-    cout << "(5)" << endl;
-    cout << "Print a set" << " ";
-    cout.width(14);
-    cout << "(6)" << endl;
-    cout << "Exit" << " ";
-    cout.width(21);
-    cout << "(7)" << endl;
+    cout << "[1] add set\n[2] remove set\n[3] union\n[4] intersection\n[5] power set\n[6] print\n[0] exit\n";
 }
 
 void Calculator::name_error(string param) {
     cerr << "ERROR: " << param << " does not exist" << endl;
-}
-
-
-void Calculator::print_calc() {
-    if (size == 0) {
-        cout << "{}" << endl;
-        return;
-    }
-    if (size == 1) {
-        cout << "{";
-        calc_arr[0]->print_set(true);
-        cout << " }";
-        return;
-    }
-    nested_sort(calc_arr, size);
-    cout << "{ ";
-    calc_arr[0]->print_set(true);
-    cout << ", ";
-    for (int i = 1; i < size - 1; i++) {
-        calc_arr[i]->print_set(true);
-        cout << ", ";
-    }
-    calc_arr[size - 1]->print_set(true);
-    cout << "}";
-    cout << "calc size is " << size;
-
 }

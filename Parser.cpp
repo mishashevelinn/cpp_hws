@@ -3,7 +3,7 @@
 bool Parser::parse_set(Set *set) {
     cin.ignore();
     string name = parse_name();
-    if (!name.compare("error")) {
+    if (!name.compare("error") ) {
         cerr << IN_ERROR << endl;
         return false;
     }
@@ -22,7 +22,7 @@ bool Parser::parse_set(Set *set) {
     stringstream s(str);
     while (s >> temp) {
         if (!isnumeric(temp)) {
-            cerr << IN_ERROR;
+            cerr << IN_ERROR << endl;
             return false;
         }
         set->add(strtoi(temp));
@@ -53,12 +53,16 @@ int Parser::strtoi(string str) {
 
 string Parser::parse_name() {
     string name = get_input();
+    if (name.empty()) return "error";
     if (valid_name(name))
         return name;
     return "error";
 }
 
 bool Parser::valid_name(string candidate) {
+    if(candidate.length() > 8 || candidate.empty()) { return false;}
+
+
     for (int i = 0; i < candidate.length(); i++) {
         if (!((int) candidate[i] >= 65 && (int) candidate[i] <= 90))
             return false;
