@@ -21,7 +21,7 @@ Calculator::~Calculator() {
 }
 
 bool Calculator::remove_set() {
-    cin.ignore();
+    //cin.ignore();
     const string &set_name = parser->parse_name();
 
     if (!param_check(set_name))
@@ -35,15 +35,19 @@ bool Calculator::remove_set() {
 }
 
 bool Calculator::set_unite() {
-    string A;
-    string B;
-    string uni_name;
-    string test;
-    cin.ignore();
-    getline(cin, test);
-    stringstream s(test);
-    s >> A;
-    s >> B;
+      string A;
+      string B;
+      string uni_name;
+//    string test;
+//    //cin.ignore();
+//    getline(cin, test);
+//    stringstream s(test);
+//    s >> A;
+//    s >> B;
+    if(!parser->parse_names(A, B)){
+        cerr << IN_ERROR << endl;
+        return false;
+    }
     if (!param_check(A, B)) {
         return false;
     }
@@ -60,15 +64,18 @@ bool Calculator::set_unite() {
 }
 
 bool Calculator::intersect() {
-    string A;
-    string B;
-    string inte_name;
-    string test;
-    cin.ignore();
-    getline(cin, test);
-    stringstream s(test);
-    s >> A;
-    s >> B;
+      string A;
+      string B;
+      string inte_name;
+//    string test;
+//    getline(cin, test);
+//    stringstream s(test);
+//    s >> A;
+//    s >> B;
+    if(!parser->parse_names(A, B)) {
+        cerr << IN_ERROR << endl;
+        return false;
+    }
     if (!param_check(A, B)) return false;
 
     getline(cin, inte_name);
@@ -83,14 +90,13 @@ bool Calculator::intersect() {
 }
 
 bool Calculator::power_set() {
-    string A;
     string test;
-    cin.ignore();
     getline(cin, test);
-    stringstream s(test);
-    s >> A;
-
-    if (!param_check(A)) {
+    if( !parser->valid_name(test)) {
+        cerr << IN_ERROR << endl;
+        return false;
+    }
+    if (!param_check(test)) {
         return false;
     }
 
@@ -240,7 +246,7 @@ bool Calculator::param_check(const string &A) {
 
 bool Calculator::calc_print_set() {
     string A;
-    cin.ignore();
+    //cin.ignore();
     getline(cin, A);
 
     if (!param_check(A)) {
@@ -253,9 +259,11 @@ bool Calculator::calc_print_set() {
 
 void Calculator::main_loop() {
     bool ex = false;
-    menu();
+   // menu();
     char opt;
-    while (!ex && (cin >> opt)) {
+    while (!ex) {
+        menu();
+        if(!parser->check_opt(opt)) continue;
         switch (opt) {
             case '1':
                 add_set();
@@ -279,10 +287,9 @@ void Calculator::main_loop() {
                 ex = true;
                 break;
             default:
-                cerr << "ERROR: invalid command; type 0 for exit" << endl;
+                cerr << OPT_ERROR << endl;
                 break;
         }
-        if(!ex){menu();}
     }
 }
 

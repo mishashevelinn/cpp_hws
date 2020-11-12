@@ -6,6 +6,7 @@
 #include "Set.h"
 
 #define IN_ERROR "ERROR: invalid input"
+#define OPT_ERROR "ERROR: invalid command; type 0 for exit"
 
 
 class Parser {
@@ -34,8 +35,9 @@ public:
 
     string C;
 
-    void pares_names();
+    bool parse_names(string &A, string &B);
 
+    bool check_opt(char &opt);
 };
 
 #endif //CPP_HWS_PARSER_H

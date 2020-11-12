@@ -1,7 +1,7 @@
 #include "Parser.h"
 
 bool Parser::parse_set(Set *set) {
-    cin.ignore();
+    //cin.ignore();
     string name = parse_name();
     if (!name.compare("error") ) {
         cerr << IN_ERROR << endl;
@@ -70,12 +70,32 @@ bool Parser::valid_name(string candidate) {
     return true;
 }
 
-void Parser::pares_names() {
-    string inte_name;
+bool Parser::parse_names(string &A, string &B) {
+    int counter = 0;
     string test;
-    cin.ignore();
+    string temp;
     getline(cin, test);
     stringstream s(test);
-    s >> A;
-    s >> B;
+    while(s >> temp) counter++;
+    if (counter != 2) return false;
+    stringstream ss(test);
+    ss >> A;
+    ss >> B;
+
+    if (!valid_name(A)) return false;
+    if (!valid_name(B)) return false;
+    return true;
 }
+
+bool Parser :: check_opt(char &opt){
+    string test;
+    getline(cin, test);
+    if( test.length() != 1 || !((int) test[0] >= 48 && (int) test[0] <= 57)) {
+        cerr << OPT_ERROR << endl;
+        return false;
+    }
+    opt = test[0];
+    return true;
+
+ }
+
