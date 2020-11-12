@@ -35,10 +35,16 @@ bool Calculator::remove_set() {
 }
 
 bool Calculator::set_unite() {
+    string A;
+    string B;
     string uni_name;
-
-    parser->pares_names();
-    if (!param_check(parser->A, parser->B)) {
+    string test;
+    cin.ignore();
+    getline(cin, test);
+    stringstream s(test);
+    s >> A;
+    s >> B;
+    if (!param_check(A, B)) {
         return false;
     }
 
@@ -54,10 +60,16 @@ bool Calculator::set_unite() {
 }
 
 bool Calculator::intersect() {
+    string A;
+    string B;
     string inte_name;
-
-    parser->pares_names();
-    if (!param_check(parser->A, parser->B)) return false;
+    string test;
+    cin.ignore();
+    getline(cin, test);
+    stringstream s(test);
+    s >> A;
+    s >> B;
+    if (!param_check(A, B)) return false;
 
     getline(cin, inte_name);
     if (!parser->valid_name(inte_name)) {
