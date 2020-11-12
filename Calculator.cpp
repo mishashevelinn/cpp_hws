@@ -16,6 +16,10 @@ bool Calculator::add_set() {
     return true;
 }
 
+Calculator::~Calculator() {
+    delete [] calc_arr;
+}
+
 bool Calculator::remove_set() {
     cin.ignore();
     const string &set_name = parser->parse_name();
@@ -89,6 +93,8 @@ bool Calculator::power_set() {
 }
 
 void Calculator::generate_subsets(Set *set, Set *subset, Calculator *storage, int i) {
+    Calculator *temp = new Calculator();
+    temp->save_set(subset, true);
     if (i == set->get_ord()) {
         storage->save_set(subset, true);
         return;
@@ -96,6 +102,8 @@ void Calculator::generate_subsets(Set *set, Set *subset, Calculator *storage, in
     generate_subsets(set, new Set(subset), storage, i + 1);
     subset->add(set->get(i));
     generate_subsets(set, new Set(subset), storage, i + 1);
+    delete temp;
+
 }
 
 
@@ -163,7 +171,7 @@ void Calculator::print_calc(string name) {
         cout << ",";
     }
     calc_arr[size - 1]->print_set(true);
-    cout << "}\n" << endl;
+    cout << "}" << endl;
 }
 
 void Calculator::nested_sort(Set **array, int size) {

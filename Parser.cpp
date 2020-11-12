@@ -78,8 +78,4 @@ void Parser::pares_names() {
     stringstream s(test);
     s >> A;
     s >> B;
-
 }
-
-
-

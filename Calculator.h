@@ -13,6 +13,8 @@ public:
 
     void main_loop();
 
+    virtual ~Calculator();
+
 
 private:
     Set **calc_arr;
