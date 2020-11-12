@@ -27,6 +27,15 @@ public:
     string parse_name();
 
     bool valid_name(string candidate);
+
+    string A;
+
+    string B;
+
+    string C;
+
+    void pares_names();
+
 };
 
 #endif //CPP_HWS_PARSER_H

@@ -69,3 +69,17 @@ bool Parser::valid_name(string candidate) {
     }
     return true;
 }
+
+void Parser::pares_names() {
+    string inte_name;
+    string test;
+    cin.ignore();
+    getline(cin, test);
+    stringstream s(test);
+    s >> A;
+    s >> B;
+
+}
+
+
+

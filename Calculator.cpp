@@ -31,16 +31,10 @@ bool Calculator::remove_set() {
 }
 
 bool Calculator::set_unite() {
-    string A;
-    string B;
     string uni_name;
-    string test;
-    cin.ignore();
-    getline(cin, test);
-    stringstream s(test);
-    s >> A;
-    s >> B;
-    if (!param_check(A, B)) {
+
+    parser->pares_names();
+    if (!param_check(parser->A, parser->B)) {
         return false;
     }
 
@@ -56,23 +50,16 @@ bool Calculator::set_unite() {
 }
 
 bool Calculator::intersect() {
-    string A;
-    string B;
     string inte_name;
-    string test;
-    cin.ignore();
-    getline(cin, test);
-    stringstream s(test);
-    s >> A;
-    s >> B;
-    if (!param_check(A, B)) return false;
+
+    parser->pares_names();
+    if (!param_check(parser->A, parser->B)) return false;
 
     getline(cin, inte_name);
     if (!parser->valid_name(inte_name)) {
         cerr << IN_ERROR << endl;
         return false;
     }
-
 
     Set *intersection = calc_arr[A_index]->intersect(calc_arr[B_index], inte_name);
     save_set(intersection, false);
@@ -158,13 +145,13 @@ void Calculator::resize_arr() {
 void Calculator::print_calc(string name) {
     cout << "P(" << name << ')' << "=";
     if (size == 0) {
-        cout << "{}" << endl;
+        cout << "{{}}\n" << endl;
         return;
     }
     if (size == 1) {
         cout << '{';
         calc_arr[0]->print_set(true);
-        cout << "}";
+        cout << "}\n";
         return;
     }
     nested_sort(calc_arr, size);
@@ -252,19 +239,15 @@ void Calculator::main_loop() {
         switch (opt) {
             case '1':
                 add_set();
-                //print_calc();
                 break;
             case '2' :
                 remove_set();
-                //print_calc();
                 break;
             case '3':
                 set_unite();
-                //print_calc();
                 break;
             case '4':
                 intersect();
-                //print_calc();
                 break;
             case '5' :
                 power_set();
@@ -280,12 +263,12 @@ void Calculator::main_loop() {
                 break;
         }
         if(!ex){menu();}
-
     }
 }
 
 void Calculator::menu() {
     cout << "[1] add set\n[2] remove set\n[3] union\n[4] intersection\n[5] power set\n[6] print\n[0] exit\n";
+
 }
 
 void Calculator::name_error(string param) {
