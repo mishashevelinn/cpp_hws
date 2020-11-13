@@ -83,8 +83,8 @@ bool Set::add(int element) {
     for (int i = 0; i < arr_size; i++) { //copy an old array to a new
         new_arr[i] = arr[i];
     }
-    arr_size = new_arr_size;        //move a pointer
-    add(element);
+    arr_size = new_arr_size;        //move a pointer to a new array
+    add(element);                   //and finally add the element
     return true;
 
 
@@ -152,11 +152,11 @@ void Set::sort() {
     }
 }
 
-bool Set::is_bigger(Set *other) {
-    if (this->ord > other->ord)
+bool Set::is_bigger(Set &other) {
+    if (this->ord > other.ord)
         return true;
-    else if (this->ord == other->ord)
-        return this->has_larger_elements(*other);
+    else if (this->ord == other.ord)
+        return this->has_larger_elements(other);
     return false;
 }
 

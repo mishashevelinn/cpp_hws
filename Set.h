@@ -41,7 +41,7 @@ public:
 
     virtual ~Set();
 
-    bool is_bigger(Set *other);
+    bool is_bigger(Set& other);
 
     bool has_larger_elements(Set &other);
 

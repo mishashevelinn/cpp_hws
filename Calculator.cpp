@@ -193,7 +193,7 @@ void Calculator::nested_sort(Set **array, int size) {
     for (int i = 1; i < size; i++) {
         key = array[i];
         j = i;
-        while (j > 0 && array[j - 1]->is_bigger(key)) {
+        while (j > 0 && array[j - 1]->is_bigger(*key)) {
             array[j] = array[j - 1];
             j--;
         }

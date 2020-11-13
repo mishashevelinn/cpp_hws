@@ -15,14 +15,16 @@ Calculator.h
 /home/misha/CLionProjects/cpp_hws1/Calculator.h
 Parser.h
 /home/misha/CLionProjects/cpp_hws1/Parser.h
-stdio.h
--
 
 /home/misha/CLionProjects/cpp_hws1/Parser.cpp
 Parser.h
 /home/misha/CLionProjects/cpp_hws1/Parser.h
 
 /home/misha/CLionProjects/cpp_hws1/Parser.h
+string
+/home/misha/CLionProjects/cpp_hws1/string
+iostream
+-
 sstream
 -
 cstdlib
@@ -35,8 +37,6 @@ Set.h
 /home/misha/CLionProjects/cpp_hws1/Set.h
 
 /home/misha/CLionProjects/cpp_hws1/Set.h
-string
-/home/misha/CLionProjects/cpp_hws1/string
 iostream
 -
 
