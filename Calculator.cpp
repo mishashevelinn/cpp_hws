@@ -12,7 +12,7 @@ bool Calculator::add_set() {
     Set *set_to_add = new Set();
     if (!parser->parse_set(set_to_add))
         return false;
-    save_set(set_to_add, false);
+    save_set(set_to_add, NOT_SUBSET);
     return true;
 }
 
@@ -21,7 +21,6 @@ Calculator::~Calculator() {
 }
 
 bool Calculator::remove_set() {
-    //cin.ignore();
     const string &set_name = parser->parse_name();
 
     if (!param_check(set_name))
@@ -37,13 +36,8 @@ bool Calculator::remove_set() {
 bool Calculator::set_unite() {
       string A;
       string B;
-      string uni_name;
-//    string test;
-//    //cin.ignore();
-//    getline(cin, test);
-//    stringstream s(test);
-//    s >> A;
-//    s >> B;
+      string res_name;
+
     if(!parser->parse_names(A, B)){
         cerr << IN_ERROR << endl;
         return false;
@@ -52,39 +46,35 @@ bool Calculator::set_unite() {
         return false;
     }
 
-    getline(cin, uni_name);
-    if (!parser->valid_name(uni_name)) {
-        cerr << IN_ERROR<< endl;
+    getline(cin, res_name);
+    if (!parser->valid_name(res_name)) {
+        cerr << IN_ERROR << endl;
         return false;
     }
 
-    Set *united = calc_arr[A_index]->unite(calc_arr[B_index], uni_name);
-    save_set(united, false);
+    Set *united = calc_arr[A_index]->unite(calc_arr[B_index], res_name);
+    save_set(united, NOT_SUBSET);
     return true;
 }
 
 bool Calculator::intersect() {
-      string A;
-      string B;
-      string inte_name;
-//    string test;
-//    getline(cin, test);
-//    stringstream s(test);
-//    s >> A;
-//    s >> B;
+    string A;
+    string B;
+    string res_name;
+
     if(!parser->parse_names(A, B)) {
         cerr << IN_ERROR << endl;
         return false;
     }
     if (!param_check(A, B)) return false;
 
-    getline(cin, inte_name);
-    if (!parser->valid_name(inte_name)) {
+    getline(cin, res_name);
+    if (!parser->valid_name(res_name)) {   //TODO parser's job - parse name
         cerr << IN_ERROR << endl;
         return false;
     }
 
-    Set *intersection = calc_arr[A_index]->intersect(calc_arr[B_index], inte_name);
+    Set *intersection = calc_arr[A_index]->intersect(calc_arr[B_index], res_name);
     save_set(intersection, false);
     return true;
 }
@@ -104,6 +94,11 @@ bool Calculator::power_set() {
     Set *subset = new Set();
 
     generate_subsets(calc_arr[A_index], subset, storage, 0);
+
+    for (int i = 0; i < storage->size; i++) {
+        storage->calc_arr[i]->sort();
+
+    }
     storage->print_calc(calc_arr[A_index]->get_name());
 
     delete storage;
@@ -149,7 +144,7 @@ bool Calculator::save_set(Set *set_to_add, bool is_subset) {
         return true;
     }
     resize_arr();
-    save_set(set_to_add, true);
+    save_set(set_to_add, IS_SUBSET);
     return true;
 }
 
@@ -246,7 +241,6 @@ bool Calculator::param_check(const string &A) {
 
 bool Calculator::calc_print_set() {
     string A;
-    //cin.ignore();
     getline(cin, A);
 
     if (!param_check(A)) {
@@ -259,7 +253,6 @@ bool Calculator::calc_print_set() {
 
 void Calculator::main_loop() {
     bool ex = false;
-   // menu();
     char opt;
     while (!ex) {
         menu();

@@ -1,7 +1,8 @@
-#include "string"
+
 #include <iostream>
 
 using namespace std;
+
 #ifndef CPP_HWS_SET_H
 #define CPP_HWS_SET_H
 #define INITIAL_ARRAY_SIZE 12;
@@ -26,7 +27,7 @@ public:
 
     string get_name() { return name; }
 
-    static void sort(int *array, int size_of_array);
+    void sort();
 
     void print_set(bool for_P);
 
@@ -42,7 +43,7 @@ public:
 
     bool is_bigger(Set *other);
 
-    bool has_larger_elements(Set *other);
+    bool has_larger_elements(Set &other);
 
     bool is_of_bigger_size_then(Set *other) const;
 

@@ -1,6 +1,7 @@
 #ifndef CPP_HWS_PARSER_H
 #define CPP_HWS_PARSER_H
-
+#include "string"
+#include <iostream>
 #include <sstream>
 #include <cstdlib>
 #include "Set.h"
@@ -17,7 +18,7 @@ private:
 
     int size;
 
-    int strtoi(string str);
+    int strtoi(const string& str);
 
     bool isnumeric(string s);
 

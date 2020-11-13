@@ -1,7 +1,6 @@
 #include "Parser.h"
 
 bool Parser::parse_set(Set *set) {
-    //cin.ignore();
     string name = parse_name();
     if (!name.compare("error") ) {
         cerr << IN_ERROR << endl;
@@ -16,6 +15,7 @@ bool Parser::parse_set(Set *set) {
         cerr << IN_ERROR << endl;
         return false;
     }
+
     str.erase(str.length() - 1, 1);
     str.erase(0, 1);
 
@@ -46,7 +46,7 @@ bool Parser::isnumeric(string s) {
     return true;
 }
 
-int Parser::strtoi(string str) {
+int Parser::strtoi(const string& str) {
     char *p;
     return (int) strtol(str.c_str(), &p, 10);
 }
@@ -62,9 +62,8 @@ string Parser::parse_name() {
 bool Parser::valid_name(string candidate) {
     if(candidate.length() > 8 || candidate.empty()) { return false;}
 
-
-    for (int i = 0; i < candidate.length(); i++) {
-        if (!((int) candidate[i] >= 65 && (int) candidate[i] <= 90))
+    for (char i : candidate) {
+        if (!((int) i >= 65 && (int) i <= 90))
             return false;
     }
     return true;
@@ -90,12 +89,11 @@ bool Parser::parse_names(string &A, string &B) {
 bool Parser :: check_opt(char &opt){
     string test;
     getline(cin, test);
-    if( test.length() != 1 || !((int) test[0] >= 48 && (int) test[0] <= 57)) {
+    if(test.length() != 1 || !((int) test[0] >= 48 && (int) test[0] <= 57)) {
         cerr << OPT_ERROR << endl;
         return false;
     }
     opt = test[0];
     return true;
-
  }
 
