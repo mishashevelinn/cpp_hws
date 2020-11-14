@@ -93,9 +93,10 @@ bool Calculator::power_set() {
     }
 
     Calculator *storage = new Calculator();
+    Calculator *tree = new Calculator();
     Set *subset = new Set();
 
-    generate_subsets(calc_arr[A_index], subset, storage, 0);
+    generate_subsets(calc_arr[A_index], subset, storage, tree, 0);
 
     for (int i = 0; i < storage->size; i++) {
         storage->calc_arr[i]->sort();
@@ -104,20 +105,20 @@ bool Calculator::power_set() {
     storage->print_calc(calc_arr[A_index]->get_name());
 
     delete storage;
+    delete tree;
     return true;
 }
 
-void Calculator::generate_subsets(Set *set, Set *subset, Calculator *storage, int i) {
-    Calculator *temp = new Calculator();
-    temp->save_set(subset, true);
+void Calculator::generate_subsets(Set *set, Set *subset, Calculator *storage, Calculator *tree, int i) {
     if (i == set->get_ord()) {
         storage->save_set(subset, true);
         return;
     }
-    generate_subsets(set, new Set(subset), storage, i + 1);
+    tree->save_set(subset);
+    generate_subsets(set, new Set(subset), storage, tree, i + 1);
     subset->add(set->get(i));
-    generate_subsets(set, new Set(subset), storage, i + 1);
-    delete temp;
+    tree->save_set(subset);
+    generate_subsets(set, new Set(subset), storage, tree, i + 1);
 
 }
 

@@ -28,12 +28,6 @@ public:
 
     bool valid_name(string candidate);
 
-    string A;
-
-    string B;
-
-    string C;
-
     bool parse_names(string &A, string &B);
 
     bool check_opt(char &opt);

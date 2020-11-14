@@ -130,7 +130,7 @@ void Set::print_set(bool for_P) {
     if (!for_P) {       //format (2) - not a subset
         cout << name << '=';
     }
-    switch (ord) { //inspecting cases of empty an of order-one sets
+    switch (ord) { //inspecting cases of empty and of order-one sets
         case 0:
             cout << "{}";
             break;
@@ -139,7 +139,7 @@ void Set::print_set(bool for_P) {
             break;
         default:    //if the set's order is greater than one
             for (int i = 0; i < ord; i++) {
-                if (i == ord - 1) {     //prinitng its elements
+                if (i == ord - 1) {     //printing its elements
                     cout << arr[i] << '}'; //and closing a bracket
                     continue;
                 }
@@ -194,5 +194,5 @@ bool Set::has_larger_elements(Set &other) {
         else
             continue;
     }
-    return false; //indication of ,method's fail
+    return false; //set are equal which means 'this' is not bigger then the other
 }

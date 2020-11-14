@@ -50,7 +50,7 @@ private:
 
     bool calc_print_set();
 
-    void generate_subsets(Set *set, Set *subset, Calculator *storage, int i = 0);
+    void generate_subsets(Set *set, Set *subset, Calculator *storage, Calculator *tree, int i = 0);
 
     bool param_check(const string &A, const string &B);
 
