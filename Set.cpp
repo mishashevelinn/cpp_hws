@@ -177,19 +177,22 @@ bool Set::is_bigger(Set &other) {
     return false;
 }
 
-/*Assuming two order equal subsets
- * we iterate over both of them and
- * in the moment we find larger*/
+/*Assuming two sorted order-equal subsets.
+ * we iterate over both of them.
+ * since sets are sorted, enough to find one
+ * pair of not equal elements to find out
+ * which set has larger elements in terms of
+ * the exercise*/
 bool Set::has_larger_elements(Set &other) {
-    sort();
+    sort(); //iteration works only for sorted sets.
     other.sort();
     for (int i = 0; i < ord; i++) {
-        if (arr[i] > other.arr[i])
-            return true;
+        if (arr[i] > other.arr[i]) //"this" larger then "other" if we find one 'this' element
+            return true;            //which is bigger the the "other"'s and of the same index
         else if (arr[i] < other.arr[i])
-            return false;
+            return false;   //if inspected 'this' element is smaller, we assume 'this' set smaller
         else
             continue;
     }
-    return false;
+    return false; //indication of ,method's fail
 }

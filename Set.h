@@ -5,25 +5,27 @@ using namespace std;
 
 #ifndef CPP_HWS_SET_H
 #define CPP_HWS_SET_H
+
+
 #define INITIAL_ARRAY_SIZE 12;
 
 class Set {
 public:
-    Set(const string &name);
+    explicit Set(const string &name);
 
     Set();
 
-    Set(Set *other);
+    explicit Set(Set *other);
 
-    bool is_empty() { return ord == 0; }
+    bool is_empty() const { return ord == 0; }
 
     bool contains(int element);
 
     bool add(int element);
 
-    int get_size() { return arr_size; }
+   // int get_size() const { return arr_size; }
 
-    int get_ord() { return ord; }
+    int get_ord() const { return ord; }
 
     string get_name() { return name; }
 
@@ -45,16 +47,12 @@ public:
 
     bool has_larger_elements(Set &other);
 
-    bool is_of_bigger_size_then(Set *other) const;
-
 
 private:
     int arr_size;
     int ord;
     int *arr;
     string name;
-
-    void arr_copy(int *source, int *dest, int len);
 
 
 };

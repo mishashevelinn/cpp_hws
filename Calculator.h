@@ -39,8 +39,6 @@ private:
 
     bool power_set();
 
-    void print_calc();
-
 
     void resize_arr();
 

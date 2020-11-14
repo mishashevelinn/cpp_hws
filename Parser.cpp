@@ -1,3 +1,8 @@
+/*Class parser is responsible for getting input,
+ * parse a string to array of integers while checking format,
+ * Get name or names for sets and check its format
+ * Inspection of parameters sending  */
+
 #include "Parser.h"
 
 bool Parser::parse_set(Set *set) {

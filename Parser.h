@@ -12,11 +12,9 @@
 
 class Parser {
 private:
-    int currently_parsed;
 
     string get_input();
 
-    int size;
 
     int strtoi(const string& str);
 
