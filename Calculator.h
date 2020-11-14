@@ -3,8 +3,7 @@
 
 #include "Parser.h"
 
-static int A_index = 0;
-static int B_index = 0;
+
 
 #define IS_SUBSET true
 #define NOT_SUBSET false

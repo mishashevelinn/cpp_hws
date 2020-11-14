@@ -1,5 +1,7 @@
-#include <cstdio>
 #include "Calculator.h"
+static int A_index = 0;
+static int B_index = 0;
+
 
 Calculator::Calculator() {
     size = 0;

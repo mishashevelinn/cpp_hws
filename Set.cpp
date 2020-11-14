@@ -75,6 +75,7 @@ bool Set::add(int element) {
         return false;
     if (ord < arr_size) {   //if there is enough room for an element, append to the end of array
         arr[ord] = element; //and return true;
+        sort();
         ord++;
         return true;
     }
@@ -85,61 +86,74 @@ bool Set::add(int element) {
     }
     arr_size = new_arr_size;        //move a pointer to a new array
     add(element);                   //and finally add the element
+    sort();
     return true;
 
 
 }
-
+/*Union method - using add method to append
+ * each element in both sets to an empty set
+ * as add doesn't append duplicates the result
+ * is union of two sets*/
 Set *Set::unite(Set *other, const string &result_name) {
-    Set *result = new Set(result_name);
-    for (int i = 0; i < ord; i++) {
+    Set *result = new Set(result_name); //allocating a new set
+    for (int i = 0; i < ord; i++) { //adding all elements of this set
         result->add(arr[i]);
     }
-    for (int i = 0; i < other->ord; i++) {
+    for (int i = 0; i < other->ord; i++) { //adding all elements of other set
         result->add(other->arr[i]);
     }
-    return result;
+    return result; /*Now empty set contains all elemnts of both sets
+                    *with no duplicates*/
 }
-
+/*Takes a set, a name for intersection set and returns a pointer
+ * to newly allocated set which contains all common elements of
+ * given pair of sets*/
 Set *Set::intersect(Set *other, const string &result_name) {
-    Set *result = new Set(result_name);
-    for (int i = 0; i < ord; i++) {
+    Set *result = new Set(result_name); //using "contains" method to find out if an element
+        for (int i = 0; i < ord; i++) {    //is in other set
         if (other->contains(arr[i]))
-            result->add(arr[i]);
+            result->add(arr[i]);    //if so, add it to a result set
     }
     return result;
 }
 
+/* A print function for set.
+ * Sorts a set
+ * formats a print for two purposes: -(1) subset of some power set, with no name: {<elements>, delimiter = ','}
+ *                                   - (2) a single set prints in format <set_name>={<elements>, delimiter = ','}
+ *
+ * a flag for_P(for power set) indicates which format (1) or (2) to be used */
 
 void Set::print_set(bool for_P) {
-    sort();
-    if (!for_P) {
+    sort();             //sort a set
+    if (!for_P) {       //format (2) - not a subset
         cout << name << '=';
     }
-    switch (ord) {
+    switch (ord) { //inspecting cases of empty an of order-one sets
         case 0:
             cout << "{}";
             break;
         case 1:
             cout << '{' << arr[0] << '}';
             break;
-        default:
+        default:    //if the set's order is greater than one
             for (int i = 0; i < ord; i++) {
-                if (i == ord - 1) {
-                    cout << arr[i] << '}';
+                if (i == ord - 1) {     //prinitng its elements
+                    cout << arr[i] << '}'; //and closing a bracket
                     continue;
                 }
                 if (i == 0) {
-                    cout << '{' << arr[i] << ',';
+                    cout << '{' << arr[i] << ','; //opening a bracket before printing first element
                     continue;
                 }
-                cout << arr[i] << ',';
+                cout << arr[i] << ','; //delimiter is ','
             }
     }
-    if(!for_P) cout << endl;
+    if(!for_P) cout << endl;    //if we do not print a power set, print endl followed by a menu
 }
 
-void Set::sort() {
+void Set::sort() { //standard sort algorithm
     int key, j;
     for (int i = 1; i < ord; i++) {
         key = arr[i];
@@ -151,20 +165,31 @@ void Set::sort() {
         arr[j] = key;
     }
 }
-
+/*As we were asked to sort the subsets in power set
+ * we provide a custom comparison function which compares
+ * two sets by their order and does elementwise comparison
+ * in order equality case.*/
 bool Set::is_bigger(Set &other) {
-    if (this->ord > other.ord)
+    if (this->ord > other.ord) //we consider larger-ordered sets - greater
         return true;
-    else if (this->ord == other.ord)
-        return this->has_larger_elements(other);
+    else if (this->ord == other.ord) // in case of order equality
+        return this->has_larger_elements(other); //call a helper function
     return false;
 }
 
-
+/*Assuming two order equal subsets
+ * we iterate over both of them and
+ * in the moment we find larger*/
 bool Set::has_larger_elements(Set &other) {
+    sort();
+    other.sort();
     for (int i = 0; i < ord; i++) {
         if (arr[i] > other.arr[i])
             return true;
+        else if (arr[i] < other.arr[i])
+            return false;
+        else
+            continue;
     }
     return false;
 }

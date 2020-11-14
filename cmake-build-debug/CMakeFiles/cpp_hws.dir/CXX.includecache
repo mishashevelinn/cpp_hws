@@ -6,16 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/misha/CLionProjects/cpp_hws1/Calculator.cpp
-cstdio
--
-Calculator.h
-/home/misha/CLionProjects/cpp_hws1/Calculator.h
-
-/home/misha/CLionProjects/cpp_hws1/Calculator.h
-Parser.h
-/home/misha/CLionProjects/cpp_hws1/Parser.h
-
 /home/misha/CLionProjects/cpp_hws1/Parser.cpp
 Parser.h
 /home/misha/CLionProjects/cpp_hws1/Parser.h
@@ -39,10 +29,4 @@ Set.h
 /home/misha/CLionProjects/cpp_hws1/Set.h
 iostream
 -
-
-/home/misha/CLionProjects/cpp_hws1/main.cpp
-iostream
--
-Calculator.h
-/home/misha/CLionProjects/cpp_hws1/Calculator.h
 

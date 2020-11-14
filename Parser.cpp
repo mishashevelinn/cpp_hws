@@ -39,7 +39,7 @@ string Parser::get_input() {
 bool Parser::isnumeric(string s) {
     if (!isdigit(s[0]) && s[0] != '-')
         return false;
-    for (int i = 1; i < s.length(); i++) {
+    for (unsigned int i = 1; i < s.length(); i++) {
         if (!isdigit(s[i]))
             return false;
     }
@@ -62,8 +62,8 @@ string Parser::parse_name() {
 bool Parser::valid_name(string candidate) {
     if(candidate.length() > 8 || candidate.empty()) { return false;}
 
-    for (char i : candidate) {
-        if (!((int) i >= 65 && (int) i <= 90))
+    for (unsigned int i = 0; i < candidate.length(); i++) {
+        if (!((int) candidate[i] >= 65 && int(candidate[i] <= 90)))
             return false;
     }
     return true;
