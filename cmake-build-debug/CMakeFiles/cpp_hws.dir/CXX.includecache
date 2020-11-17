@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/misha/CLionProjects/cpp_hws1/Calculator.cpp
-Calculator.h
-/home/misha/CLionProjects/cpp_hws1/Calculator.h
-
 /home/misha/CLionProjects/cpp_hws1/Calculator.h
 Parser.h
 /home/misha/CLionProjects/cpp_hws1/Parser.h
@@ -23,6 +19,10 @@ sstream
 -
 cstdlib
 -
+Set.h
+/home/misha/CLionProjects/cpp_hws1/Set.h
+
+/home/misha/CLionProjects/cpp_hws1/Set.cpp
 Set.h
 /home/misha/CLionProjects/cpp_hws1/Set.h
 

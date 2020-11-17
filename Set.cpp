@@ -75,7 +75,6 @@ bool Set::add(int element) {
         return false;
     if (ord < arr_size) {   //if there is enough room for an element, append to the end of array
         arr[ord] = element; //and return true;
-        sort();
         ord++;
         return true;
     }
@@ -85,8 +84,9 @@ bool Set::add(int element) {
         new_arr[i] = arr[i];
     }
     arr_size = new_arr_size;        //move a pointer to a new array
+    delete [] arr;
+    arr = new_arr;
     add(element);                   //and finally add the element
-    sort();
     return true;
 
 
